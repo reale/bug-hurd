@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00081.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: Roberto Reale &lt;rreale@iol.it&gt;</div>
+  <div><strong>Date</strong>: Thu, 07 Aug 2003 15:00:32 +0200</div>
+  <hr/>
+  <pre>  Hi,
+
+  I have made a new pre-release (0.02) of my translator for the MINIX
+file system (actually a modified version of the Ext2 translator).
+As several major bugs have been fixed, especially in the directory-
+handling code, the new release should work far better than the previous
+one, although it is still very unstable and crash-prone.
+  Many things need to be done; among them (from the README):
+
+o rewriting such parts as are inherent to the Ext2 file system and only
+  by dint of ugly botch-works have been adapted to the MINIX fs;
+
+o polishing the code and commenting it in a more orderly manner (many
+  functions have comments which are but relics of the Ext2 code);
+
+o rewriting the Makefile;
+
+o re-implementing better inode- and zone-allocation policies (in simplifying
+  the algorithms used by the Ext2 translator, I made them probably less
+  efficient);
+
+o devising a good solution to the problem of conciliating the limitations
+  of the MINIX file system with the needs of the GNU OS, without hindering
+  compatibility with other environments;
+
+o writing some documentation on the MINIX file system itself;
+
+o developing a simple test suite.
+
+  The code of the translator is available at
+
+http://paideia.sourceforge.net/index.html
+http://prdownloads.sourceforge.net/paideia/hurd-minixfs-0.02.tar.gz?download
+
+Thanks,
+Roberto Reale
+rreale@iol.it
+
+
+P.S.: I am compelled to ask again a question which I think is of some
+consequence, to wit:
+I have some perplexities about the proper way, in which one should
+update the copyright notice.  I have added a comment to each heading, to
+explain the the code has been modified by me, but have left unchanged the
+remainder, being uncertain whether I should update the copyright year too.
+For example,
+
+*** ext2fs/dir.c	Sun Jul 20 20:16:37 2003
+--- minixfs/dir.c	Sun Jul 20 20:16:44 2003
+***************
+*** 3,8 ****
+--- 3,11 ----
+     Copyright (C) 1994,95,96,97,98,99,2000,01,02 Free Software Foundation, Inc.
+     Converted for ext2fs by Miles Bader &lt;miles@gnu.org&gt;
+  
++    Modified for the MINIX filesystem from the original for the ext2
++    filesystem by Roberto Reale &lt;rreale@iol.it&gt;.
++ 
+     This program is free software; you can redistribute it and/or
+     modify it under the terms of the GNU General Public License as
+     published by the Free Software Foundation; either version 2, or (at
+
+Is this correct?
+</pre>
+</body>
+</html>

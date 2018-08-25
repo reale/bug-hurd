@@ -1,0 +1,99 @@
+From MAILER-DAEMON Thu Aug 07 09:05:44 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.20)
+	id 19kkSe-0005J6-7z
+	for mharc-bug-hurd@gnu.org; Thu, 07 Aug 2003 09:05:44 -0400
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.20)
+	id 19kkSb-0005Hi-9b
+	for bug-hurd@gnu.org; Thu, 07 Aug 2003 09:05:41 -0400
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.20)
+	id 19kkS5-0005DO-8B
+	for bug-hurd@gnu.org; Thu, 07 Aug 2003 09:05:40 -0400
+Received: from [62.211.231.180] (helo=granada)
+	by monty-python.gnu.org with smtp (Exim 4.20) id 19kkNf-0004Zy-Ha
+	for bug-hurd@gnu.org; Thu, 07 Aug 2003 09:00:35 -0400
+Received: by granada (sSMTP sendmail emulation); Thu, 7 Aug 2003 15:00:32 +0200
+From: "Roberto Reale" <rreale@iol.it>
+Date: Thu, 7 Aug 2003 15:00:32 +0200
+To: bug-hurd@gnu.org
+Message-ID: <20030807125744.GA874@granada>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.3.28i
+Subject: MINIX fs translator - pre-release 0.02
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Thu, 07 Aug 2003 13:05:42 -0000
+
+  Hi,
+
+  I have made a new pre-release (0.02) of my translator for the MINIX
+file system (actually a modified version of the Ext2 translator).
+As several major bugs have been fixed, especially in the directory-
+handling code, the new release should work far better than the previous
+one, although it is still very unstable and crash-prone.
+  Many things need to be done; among them (from the README):
+
+o rewriting such parts as are inherent to the Ext2 file system and only
+  by dint of ugly botch-works have been adapted to the MINIX fs;
+
+o polishing the code and commenting it in a more orderly manner (many
+  functions have comments which are but relics of the Ext2 code);
+
+o rewriting the Makefile;
+
+o re-implementing better inode- and zone-allocation policies (in simplifying
+  the algorithms used by the Ext2 translator, I made them probably less
+  efficient);
+
+o devising a good solution to the problem of conciliating the limitations
+  of the MINIX file system with the needs of the GNU OS, without hindering
+  compatibility with other environments;
+
+o writing some documentation on the MINIX file system itself;
+
+o developing a simple test suite.
+
+  The code of the translator is available at
+
+http://paideia.sourceforge.net/index.html
+http://prdownloads.sourceforge.net/paideia/hurd-minixfs-0.02.tar.gz?download
+
+Thanks,
+Roberto Reale
+rreale@iol.it
+
+
+P.S.: I am compelled to ask again a question which I think is of some
+consequence, to wit:
+I have some perplexities about the proper way, in which one should
+update the copyright notice.  I have added a comment to each heading, to
+explain the the code has been modified by me, but have left unchanged the
+remainder, being uncertain whether I should update the copyright year too.
+For example,
+
+*** ext2fs/dir.c	Sun Jul 20 20:16:37 2003
+--- minixfs/dir.c	Sun Jul 20 20:16:44 2003
+***************
+*** 3,8 ****
+--- 3,11 ----
+     Copyright (C) 1994,95,96,97,98,99,2000,01,02 Free Software Foundation, Inc.
+     Converted for ext2fs by Miles Bader <miles@gnu.org>
+  
++    Modified for the MINIX filesystem from the original for the ext2
++    filesystem by Roberto Reale <rreale@iol.it>.
++ 
+     This program is free software; you can redistribute it and/or
+     modify it under the terms of the GNU General Public License as
+     published by the Free Software Foundation; either version 2, or (at
+
+Is this correct?

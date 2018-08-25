@@ -2,6 +2,10 @@
 
 My mails to the bug-hurd mailing list, with replies.
 
+### MINIX fs translator - pre-release 0.02
+
+* [MINIX fs translator - pre-release 0.02](2003-08/00081.html), Roberto Reale, 2003/08/07 ([mbox](2003-08/00081.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-08/msg00081.html))
+
 ### A translator for the MINIX file system
 
 * [A translator for the MINIX file system](2003-07/00123.html), Roberto Reale, 2003/07/20 ([mbox](2003-07/00123.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-07/msg00123.html))
