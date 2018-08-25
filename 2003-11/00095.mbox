@@ -1,0 +1,89 @@
+From MAILER-DAEMON Fri Nov 28 11:17:08 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1APlI0-0007EG-U4
+	for mharc-bug-hurd@gnu.org; Fri, 28 Nov 2003 11:16:16 -0500
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1APlHB-0005ep-BG
+	for bug-hurd@gnu.org; Fri, 28 Nov 2003 11:15:25 -0500
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1APlGT-0004cG-6y
+	for bug-hurd@gnu.org; Fri, 28 Nov 2003 11:15:12 -0500
+Received: from [130.236.254.3] (helo=mail.lysator.liu.se)
+	by monty-python.gnu.org with esmtp (Exim 4.24) id 1APlGS-0004bm-MS
+	for bug-hurd@gnu.org; Fri, 28 Nov 2003 11:14:40 -0500
+Received: by mail.lysator.liu.se (Postfix, from userid 1646)
+	id 412D1BA9A1; Fri, 28 Nov 2003 16:13:14 +0100 (MET)
+Received: from sellafield.lysator.liu.se (sellafield.lysator.liu.se
+	[130.236.254.103]) by mail.lysator.liu.se (Postfix) with ESMTP
+	id B8E48BA9A6; Fri, 28 Nov 2003 16:13:10 +0100 (MET)
+Received: from sellafield.lysator.liu.se (localhost [127.0.0.1])
+	by sellafield.lysator.liu.se (8.12.10/8.8.7) with ESMTP id
+	hASFDACM022871; Fri, 28 Nov 2003 16:13:10 +0100 (MET)
+Received: (from nisse@localhost)
+	by sellafield.lysator.liu.se (8.12.10/8.12.8/Submit) id hASFD3KZ022868; 
+	Fri, 28 Nov 2003 16:13:03 +0100 (MET)
+X-Authentication-Warning: sellafield.lysator.liu.se: nisse set sender to
+	nisse@lysator.liu.se using -f
+Sender: nisse@lysator.liu.se
+To: "Roberto Reale" <rreale@iol.it>
+References: <20031128121420.GA4323@mail.siviglia.cr>
+Content-type: text/plain; charset=iso-8859-1
+Content-transfer-encoding: 8bit
+From: nisse@lysator.liu.se (Niels =?iso-8859-1?q?M=F6ller?=)
+Date: 28 Nov 2003 16:13:01 +0100
+In-Reply-To: <20031128121420.GA4323@mail.siviglia.cr>
+Message-ID: <nnbrqwv85e.fsf@sellafield.lysator.liu.se>
+Lines: 36
+User-Agent: Gnus/5.09 (Gnus v5.9.0) Emacs/21.2
+MIME-Version: 1.0
+Cc: bug-hurd@gnu.org
+Subject: Re: Touching the way some diskfs routines handle access faults.
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Fri, 28 Nov 2003 16:15:40 -0000
+
+"Roberto Reale" <rreale@iol.it> writes:
+
+>   E.g., some servers very often panic or report ENOMEM when carrying
+> out a request would cause them to exceed their allocable storage.
+> Much better solutions can be devised: a server, for example, might
+> keep a small reserve of memory (as Emacs does),
+
+What emacs does is appropriate for interactive applications. But I
+don't think it's very appropriate for servers.
+
+> A still better idea would be, to design some sort of ``cooperative
+> protocol'', whereby to allow trusted servers to borrow and lend each
+> other memory pages, according to the amount of work they are charged
+> with.
+
+I don't think I that solves the problem. Either you reserve memory for
+the "trusted servers" so that other processes can't couse them to run
+out of memory, or you don't. In either case, the cooperative protocol
+won't make a significant difference. (Most times when you run out of
+virtual memory, there's some process running amok and allocating all
+memory it can, and it will quickly allocate anything that a
+cooperative processe gives back to the system).
+
+I think a better approach is to realize that most servers should never
+allocate memory spontaneously, only as part of the processing of some
+client request. When it runs out of memory, it should abort that
+particular request and return an error to the client, and perhaps
+write a log message, but otherwise just go on as if nothing happened.
+
+Ideally, the *client* should allocate the needed memory and then lend
+it to the server for the duration of the request (or for requests like
+open which creates a new server object and returns a handle to it, for
+the life time of the handle). But that's not going to happen soon, at
+least not before the L4 port is running.
+
+/Niels

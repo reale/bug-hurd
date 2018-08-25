@@ -2,6 +2,11 @@
 
 My mails to the bug-hurd mailing list, with replies.
 
+### Touching the way some diskfs routines handle access faults
+
+* [Touching the way some diskfs routines handle access faults.](2003-11/00093.html), Roberto Reale, 2003/11/28 ([mbox](2003-11/00093.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-11/msg00093.html))
+    * [Re: Touching the way some diskfs routines handle access faults.](2003-11/00095.html), Niels Möller, 2003/11/28 ([mbox](2003-11/00095.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-11/msg00095.html))
+
 ### MINIX fs translator - new alpha release
 
 * [MINIX fs translator - new alpha release](2003-10/00039.html), Roberto Reale, 2003/10/14 ([mbox](2003-10/00039.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-10/msg00039.html))

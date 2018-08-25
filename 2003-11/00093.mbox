@@ -1,0 +1,74 @@
+From MAILER-DAEMON Fri Nov 28 08:14:52 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1APiSR-0001he-O6
+	for mharc-bug-hurd@gnu.org; Fri, 28 Nov 2003 08:14:51 -0500
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1APiSP-0001gq-6d
+	for bug-hurd@gnu.org; Fri, 28 Nov 2003 08:14:49 -0500
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1APiRs-0001I2-Ro
+	for bug-hurd@gnu.org; Fri, 28 Nov 2003 08:14:47 -0500
+Received: from [151.26.58.28] (helo=siviglia)
+	by monty-python.gnu.org with smtp (Exim 4.24) id 1APiRD-0000vT-F9
+	for bug-hurd@gnu.org; Fri, 28 Nov 2003 08:13:36 -0500
+Received: by siviglia (sSMTP sendmail emulation);
+	Fri, 28 Nov 2003 13:14:20 +0100
+From: "Roberto Reale" <rreale@iol.it>
+Date: Fri, 28 Nov 2003 13:14:20 +0100
+To: bug-hurd@gnu.org
+Message-ID: <20031128121420.GA4323@mail.siviglia.cr>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.3.28i
+Subject: Touching the way some diskfs routines handle access faults.
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Fri, 28 Nov 2003 13:14:49 -0000
+
+Hi,
+
+  I have some perplexity concerning some functions which are declared
+in the `diskfs' library, namely `diskfs_sync_everything',
+`diskfs_shutdown_pager', `diskfs_node_update' and a few others.
+
+  As those functions may access and alter the in-core disk image, they
+must be prepared to handle access faults.  In fact, in the Ext2
+translator they do detect access faults, yet they simply disregard
+them and fail to report them to the caller; the problem is, that they
+are declared as returning void.
+
+  Now I believe that having those functions report an error condition to 
+higher levels might help in catching subtle bugs, and in developing
+translators of greater robustness.
+
+  The question of how core servers and translators should handle error
+conditions is clearly of vast concern, and is difficult, too.
+Although I am not able to treat it now with due depth, I am
+considering it, and have grown to believe that we can improve the Hurd
+very much in this respect.
+
+  E.g., some servers very often panic or report ENOMEM when carrying
+out a request would cause them to exceed their allocable storage.
+Much better solutions can be devised: a server, for example, might
+keep a small reserve of memory (as Emacs does), and rely on it to
+recover from an emergency condition; or it might implement some smart
+algorithm and prune its internal caches on memory pressure.  A still
+better idea would be, to design some sort of ``cooperative protocol'',
+whereby to allow trusted servers to borrow and lend each other memory
+pages, according to the amount of work they are charged with.
+
+  Am I mistaken?
+
+Thanks,
+Roberto Reale
+rreale@iol.it

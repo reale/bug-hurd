@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00095.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Fri, 28 Nov 2003 16:13:01 +0100</div>
+  <hr/>
+  <pre>&#34;Roberto Reale&#34; &lt;rreale@iol.it&gt; writes:
+
+&gt;   E.g., some servers very often panic or report ENOMEM when carrying
+&gt; out a request would cause them to exceed their allocable storage.
+&gt; Much better solutions can be devised: a server, for example, might
+&gt; keep a small reserve of memory (as Emacs does),
+
+What emacs does is appropriate for interactive applications. But I
+don&#39;t think it&#39;s very appropriate for servers.
+
+&gt; A still better idea would be, to design some sort of ``cooperative
+&gt; protocol&#39;&#39;, whereby to allow trusted servers to borrow and lend each
+&gt; other memory pages, according to the amount of work they are charged
+&gt; with.
+
+I don&#39;t think I that solves the problem. Either you reserve memory for
+the &#34;trusted servers&#34; so that other processes can&#39;t couse them to run
+out of memory, or you don&#39;t. In either case, the cooperative protocol
+won&#39;t make a significant difference. (Most times when you run out of
+virtual memory, there&#39;s some process running amok and allocating all
+memory it can, and it will quickly allocate anything that a
+cooperative processe gives back to the system).
+
+I think a better approach is to realize that most servers should never
+allocate memory spontaneously, only as part of the processing of some
+client request. When it runs out of memory, it should abort that
+particular request and return an error to the client, and perhaps
+write a log message, but otherwise just go on as if nothing happened.
+
+Ideally, the *client* should allocate the needed memory and then lend
+it to the server for the duration of the request (or for requests like
+open which creates a new server object and returns a handle to it, for
+the life time of the handle). But that&#39;s not going to happen soon, at
+least not before the L4 port is running.
+
+/Niels
+</pre>
+</body>
+</html>

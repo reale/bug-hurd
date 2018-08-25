@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00093.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: Roberto Reale &lt;rreale@iol.it&gt;</div>
+  <div><strong>Date</strong>: Fri, 28 Nov 2003 13:14:20 +0100</div>
+  <hr/>
+  <pre>Hi,
+
+  I have some perplexity concerning some functions which are declared
+in the `diskfs&#39; library, namely `diskfs_sync_everything&#39;,
+`diskfs_shutdown_pager&#39;, `diskfs_node_update&#39; and a few others.
+
+  As those functions may access and alter the in-core disk image, they
+must be prepared to handle access faults.  In fact, in the Ext2
+translator they do detect access faults, yet they simply disregard
+them and fail to report them to the caller; the problem is, that they
+are declared as returning void.
+
+  Now I believe that having those functions report an error condition to 
+higher levels might help in catching subtle bugs, and in developing
+translators of greater robustness.
+
+  The question of how core servers and translators should handle error
+conditions is clearly of vast concern, and is difficult, too.
+Although I am not able to treat it now with due depth, I am
+considering it, and have grown to believe that we can improve the Hurd
+very much in this respect.
+
+  E.g., some servers very often panic or report ENOMEM when carrying
+out a request would cause them to exceed their allocable storage.
+Much better solutions can be devised: a server, for example, might
+keep a small reserve of memory (as Emacs does), and rely on it to
+recover from an emergency condition; or it might implement some smart
+algorithm and prune its internal caches on memory pressure.  A still
+better idea would be, to design some sort of ``cooperative protocol&#39;&#39;,
+whereby to allow trusted servers to borrow and lend each other memory
+pages, according to the amount of work they are charged with.
+
+  Am I mistaken?
+
+Thanks,
+Roberto Reale
+rreale@iol.it
+</pre>
+</body>
+</html>
