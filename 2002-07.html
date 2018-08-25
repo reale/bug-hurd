@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>2002-07</title>
+  </head>
+  <body>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 12:21:55 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>Hi,
+
+I&#39;m a beginning GNU user and a second-rate programmer, yet
+I&#39;m attracted by the Free Software philosophy and even more by
+OS design.  Indeed, I&#39;ve a small question about the Hurd:
+
+Why we can&#39;t implement message passing entirely in user-space rather
+than in the kernel?
+
+Roberto
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 13:13:30 +0200</div>
+  <div><strong>From</strong>: Marcus Brinkmann &lt;Marcus.Brinkmann@ruhr-uni-bochum.de&gt;</div>
+  <hr/>
+  <pre>On Mon, Jul 15, 2002 at 12:21:55PM +0200, rreale@iol.it wrote:
+&gt; Why we can&#39;t implement message passing entirely in user-space rather
+&gt; than in the kernel?
+
+Imagine you remove all IPC from the kernel.  How do you send a user-space
+message to another process?  You can&#39;t.
+
+That said, there is a lot of things in GNU Mach that can be in user space.
+Mach is a microkernel of the first generation.  Try to take a look at L4,
+which is a modern microkernel that is extremely minimal.
+
+Thanks,
+Marcus
+
+-- 
+`Rhubarb is no Egyptian god.&#39; GNU      http://www.gnu.org    marcus@gnu.org
+Marcus Brinkmann              The Hurd http://www.gnu.org/software/hurd/
+Marcus.Brinkmann@ruhr-uni-bochum.de
+http://www.marcus-brinkmann.de/
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 16:38:21 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Mon, Jul 15, 2002 at 01:13:30PM +0200, Marcus Brinkmann wrote:
+&gt; On Mon, Jul 15, 2002 at 12:21:55PM +0200, rreale@iol.it wrote:
+&gt; &gt; Why we can&#39;t implement message passing entirely in user-space rather
+&gt; &gt; than in the kernel?
+&gt; 
+&gt; Imagine you remove all IPC from the kernel.  How do you send a user-space
+&gt; message to another process?  You can&#39;t.
+ 
+But isn&#39;t it possible to build a sort of mechanism based on shared memory,
+thus avoiding the passage across the kernel?
+
+Roberto
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 08:03:55 -0700</div>
+  <div><strong>From</strong>: James Morrison &lt;rocketmail_com@rocketmail.com&gt;</div>
+  <hr/>
+  <pre>--- rreale@iol.it wrote:
+&gt; On Mon, Jul 15, 2002 at 01:13:30PM +0200, Marcus Brinkmann wrote:
+&gt; &gt; On Mon, Jul 15, 2002 at 12:21:55PM +0200, rreale@iol.it wrote:
+&gt; &gt; &gt; Why we can&#39;t implement message passing entirely in user-space rather
+&gt; &gt; &gt; than in the kernel?
+&gt; &gt; 
+&gt; &gt; Imagine you remove all IPC from the kernel.  How do you send a user-space
+&gt; &gt; message to another process?  You can&#39;t.
+&gt;  
+&gt; But isn&#39;t it possible to build a sort of mechanism based on shared memory,
+&gt; thus avoiding the passage across the kernel?
+&gt; 
+&gt; Roberto
+&gt; 
+
+ Who delegates where the shared memory is and who has access to it?
+
+=====
+James Morrison
+   University of Waterloo
+   Computer Science - Digital Hardware
+   2A co-op
+http://hurd.dyndns.org
+
+Anyone referring to this as &#39;Open Source&#39; shall be eaten by a GNU
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 18:07:39 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Mon, Jul 15, 2002 at 08:03:55AM -0700, James Morrison wrote:
+&gt;  Who delegates where the shared memory is 
+
+But, I think, whatever component does now memory management.
+
+&gt;  and who has access to it?
+
+Of course, the processes involved in message passing.
+I&#39;ve some vague ideas on how this could be performed, but because of my 
+poor English it&#39;s not so simple for me to put them down.
+Nevertheless, if you think it&#39;s not wholly time lost, I&#39;ll try to do my best.
+
+Roberto
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 10:12:01 -0700</div>
+  <div><strong>From</strong>: James Morrison &lt;rocketmail_com@rocketmail.com&gt;</div>
+  <hr/>
+  <pre>--- rreale@iol.it wrote:
+&gt; 
+&gt; On Mon, Jul 15, 2002 at 08:03:55AM -0700, James Morrison wrote:
+&gt; &gt;  Who delegates where the shared memory is 
+&gt; 
+&gt; But, I think, whatever component does now memory management.
+&gt; 
+
+ So, you are limited to one memory manager?
+
+&gt; &gt;  and who has access to it?
+&gt; 
+&gt; Of course, the processes involved in message passing.
+&gt; I&#39;ve some vague ideas on how this could be performed, but because of my 
+&gt; poor English it&#39;s not so simple for me to put them down.
+&gt; Nevertheless, if you think it&#39;s not wholly time lost, I&#39;ll try to do my best.
+&gt; 
+&gt; Roberto
+&gt; 
+
+ I&#39;m curious to hear your ideas.
+
+
+=====
+James Morrison
+   University of Waterloo
+   Computer Science - Digital Hardware
+   2A co-op
+http://hurd.dyndns.org
+
+Anyone referring to this as &#39;Open Source&#39; shall be eaten by a GNU
+
+</pre>
+  <hr/>
+  <div><strong>From</strong>: David Walter &lt;dwalter@syr.edu&gt;</div>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 13:29:03 -0400</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; On Mon, Jul 15, 2002 at 08:03:55AM -0700, James Morrison wrote:
+&gt;&gt;  Who delegates where the shared memory is
+&gt;
+&gt; But, I think, whatever component does now memory management.
+&gt;
+&gt;&gt;  and who has access to it?
+&gt;
+&gt; Of  course, the processes  involved  in message passing.   I&#39;ve some
+&gt; vague ideas on how this could  be performed, but  because of my poor
+&gt; English it&#39;s not so simple  for me to  put them down.  Nevertheless,
+&gt; if you think it&#39;s not wholly time lost, I&#39;ll try to do my best.
+
+
+
+There is a dependency on someone  arbitrating who has control over the
+memory.  Eventually it boils down to one of two models (oversimplified
+but hopefully this will help clarify things)
+
+    1.  Some   priviledged user/process   determines  which memory  is
+    available for communication.
+
+
+    2. A free for all, anyone  can arbitrarily choose to negotiate who
+    to communicate with, and or which memory to use.
+
+
+In  traditional  multi{user,tasking}  OS   design  the  kernel  or   a
+supervisory program   running with  some  special  priviledge  accepts
+requests and grants(or denies) communication channels or allocation of
+memory [1].   In  a   microkernel design,  this  may  be  left  to  an
+independent  &#39;user  space&#39; process,   but   still  it  runs  with  the
+priviledge of making the decision.
+
+
+In  [2] the process can  access memory as  it wants.  One problem with
+[2] is  that, (as in  {IBM-PC/MS}/DOS) a mis-behaving or  evil process
+can access memory which is being used by other processes.  In the case
+of an errant uninitialized or   faulty pointer, the address can  cause
+_bad_(TM) things to occur.
+
+Bad things include overwriting memory in other programs address space,
+including  device drivers  and system resources.   Imagine overwriting
+the console driver&#39;s  interface,   or replacing an  interrupt  vectors
+pointer to point to a memory location with your evil routine, then you
+can capture keystrokes, or lock the machine.
+
+This type of   problem   (lockup&#39;s  or freezing or   misbehaviour   of
+programs)  was a  frequent occurrence  with   pc&#39;s, up  to the current
+implementations of windows (non/NT (aka OS/2) kernel).
+
+
+HTH.
+--
+Hope springs eternal!
+
+/^\
+\ /     ASCII RIBBON CAMPAIGN
+ X        AGAINST HTML MAIL
+/ \
+
+</pre>
+  <hr/>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 11:35:31 +0200</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; But isn&#39;t it possible to build a sort of mechanism based on shared memory,
+&gt; thus avoiding the passage across the kernel?
+
+It might be possible to create an ipc mechanism for pure data using
+only shared memory, even if it seems somewhat tricky to make it robust.
+
+But IPC is more than just data. For Hurd IPC we also need to be able
+to send memory pages (by reference, not copying them), and port
+rights. On Mach, all that is in the kernel, on L4, management of port
+rights will likely move to user space, but management of the ownership
+of individual memory pages is a natural thing for the kernel to do,
+and that&#39;s the case also for L4.
+
+I suspect that the minimal kernel IPC mechanism that is needed for the
+Hurd is something like &#34;give this other process access to this
+particular memory page&#34;. L4 provides slightly more than that, and
+that&#39;s probably good for performance, in particular for ipc calls
+where the data fit in registers.
+
+Regards,
+/Niels
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 12:26:33 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Tue, Jul 16, 2002 at 11:35:31AM +0200, Niels M?ller wrote:
+&gt; rreale@iol.it writes:
+&gt; 
+&gt; &gt; But isn&#39;t it possible to build a sort of mechanism based on shared memory,
+&gt; &gt; thus avoiding the passage across the kernel?
+&gt; 
+&gt; It might be possible to create an ipc mechanism for pure data using
+&gt; only shared memory, even if it seems somewhat tricky to make it robust.
+
+But how much performance imprevement would we achieve if we created such
+a mechanism, only for pure data?
+
+Roberto
+
+</pre>
+  <hr/>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 16:09:16 +0200</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; But how much performance imprevement would we achieve if we created such
+&gt; a mechanism, only for pure data?
+
+The fastest way to do it that I can imagine, for the simplest case of
+mutually trusting processes, is to have a (possibly) short message
+queue, protected by a mutex and some condition variables, all in th
+eshared memory page. It&#39;s not obvious to me if that will be slower or
+faster than L4 ipc that can pass the data in registers.
+
+Furthermore, I have never implemented mutexes and condition variables,
+but I wouldn&#39;t be surprised if some syscall is needed for conditions
+to propagate between threads or processes.
+
+Regards,
+/Niels
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 18:17:37 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Tue, Jul 16, 2002 at 04:09:16PM +0200, Niels M?ller wrote:
+&gt; rreale@iol.it writes:
+&gt; 
+&gt; &gt; But how much performance imprevement would we achieve if we created such
+&gt; &gt; a mechanism, only for pure data?
+&gt; 
+&gt; The fastest way to do it that I can imagine, for the simplest case of
+&gt; mutually trusting processes, is to have a (possibly) short message
+&gt; queue, protected by a mutex and some condition variables, all in th
+&gt; eshared memory page. It&#39;s not obvious to me if that will be slower or
+&gt; faster than L4 ipc that can pass the data in registers.
+&gt; 
+&gt; Furthermore, I have never implemented mutexes and condition variables,
+&gt; but I wouldn&#39;t be surprised if some syscall is needed for conditions
+&gt; to propagate between threads or processes.
+&gt; 
+&gt; Regards,
+&gt; /Niels
+
+I&#39;ll try to roughly explain my idea, which doesn&#39;t apply
+to every IPC type, but only to a small subset thereof. This 
+subset includes the message passing between a client/server
+pair and among the servers themselves, with the additional
+constraint of very small pieces of data being passed at once.
+In this scenario we could use one (or even more) system-wide
+data structure, such as a queue, to manage all the messages.
+This queue would be made up of several smaller queues, each
+one pertaining to a single process (or group of processes)
+and used by this process to talk with one or more servers.
+Each small queue would live in one page (or more, but few, pages)
+or memory shared with the servers. One possible (simplified)
+arrangement of the memory would look like this:
+
+  process #1        process #2        process #3  
+| address   |     | address   |     | address   | 
+| space     |     | space     |     | space     |
+|-----------|     |-----------|     |-----------|
+| text etc. |     | text etc. |     | text etc. |
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+|   heap    |     |   heap    |     |   heap    |
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+| IPC queue |-+   | IPC queue |-+   | IPC queue |-+
+|-----------| |   |-----------| |   |-----------| |
+|           | |   |           | |   |           | |
+|-----------| |   |-----------| |   |-----------| |
+|   stack   | |   |   stack   | |   |   stack   | |
+|-----------| |   |-----------| |   |-----------| |
+|           | |   |           | |   |           | |
+              |                 |                 |
+              |                 |                 |
+              |                 |                 |
+              +-----------+     |     +-----------+
+                          |     |     |
+                          |     |     |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+server #1|        |  h  |q   |q    |q    |q    |    |         |
+address  |  text  |  e  |u   |u    |u    |u    |    |  stack  |
+space    |  etc.  |  a  |e 1 |e 2  |e 3  |e n  |    |         |
+         |        |  p  |u   |u    |u    |u    |    |         |
+         |        |     |e   |e    |e    |e    |    |         |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+                          |     |     |
+                          |     |     |
+                          |     |     |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+server #2|        |  h  |q   |q    |q    |q    |    |         |
+address  |  text  |  e  |u   |u    |u    |u    |    |  stack  |
+space    |  etc.  |  a  |e 1 |e 2  |e 3  |e n  |    |         |
+         |        |  p  |u   |u    |u    |u    |    |         |
+         |        |     |e   |e    |e    |e    |    |         |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+
+Sorry for the lack of clearness, but my idea - and for that matter
+my English - are alas at early alpha stage. I&#39;d like, however,
+to hear your criticism and hopefully your suggestions.
+
+Thanks,
+Roberto
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 12:44:07 -0700</div>
+  <div><strong>From</strong>: James Morrison &lt;rocketmail_com@rocketmail.com&gt;</div>
+  <hr/>
+  <pre>
+ Ok, so it looks like every process maintains it&#39;s own set of queues.  So
+I am a server process and I setup 3 queues for clients to write in.  Now,
+how do the clients know where to write the data so I can find it?  Previously,
+you said it would be the memory managers job.  So, I write to some pre-defined
+queue of the memory manager, to say people can write msg&#39;s to me.  Now, any
+process can ask the memory manager where to put msg&#39;s to me.  If this is what
+you are thinking, it sort of makes sense.  But assumming we have a process/task
+boundary where each process has it&#39;s own virtual address space how can it break
+this barrier without the kernel&#39;s help?  I can sort of wrap my brain around
+this,
+but I keep comming back to crazy libc hacks.
+
+=====
+James Morrison
+   University of Waterloo
+   Computer Science - Digital Hardware
+   2A co-op
+http://hurd.dyndns.org
+
+Anyone referring to this as &#39;Open Source&#39; shall be eaten by a GNU
+
+</pre>
+  <hr/>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 22:58:40 +0200</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; I&#39;ll try to roughly explain my idea, which doesn&#39;t apply
+&gt; to every IPC type, but only to a small subset thereof. This 
+&gt; subset includes the message passing between a client/server
+&gt; pair and among the servers themselves, with the additional
+&gt; constraint of very small pieces of data being passed at once.
+
+I think the problem is that you have some memory shared between
+threads (of different processes). For now, I&#39;m assuming that this
+sharing is setup in advance by some memory manager or kernel
+mechanism.
+
+But as several threads need to access the memory in parallell, you
+need to use some syncronization primitives (mutexes, condition
+variables, see any book on programming with threads) to coordinate
+access. And as far as I can see, that&#39;s hard to do without kernel help.
+
+One basic problem is: I&#39;m an idle server process, and I want to wait
+for a client to send me a message. How do I do that? There are two
+ways: Either I poll the structures regularly, or I need some basic ipc
+primitive, typically a wakeup call to a thread in a different process.
+In the former case, I&#39;ll either waste cpu time or get slow ipc
+response time, and for the latter case, it seems hard to do it
+completely in user space.
+
+So to give a good answer I think one first need a thourough
+understanding of how how threading primitives like mutexes and
+condition variables are implemented, and that&#39;s not really my area.
+
+/Niels
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Wed, 17 Jul 2002 13:30:31 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Tue, Jul 16, 2002 at 12:44:07PM -0700, James Morrison wrote:
+&gt; 
+&gt; 
+&gt;  Ok, so it looks like every process maintains it&#39;s own set of queues.  So
+&gt; I am a server process and I setup 3 queues for clients to write in.  Now,
+&gt; how do the clients know where to write the data so I can find it?  Previously,
+&gt; you said it would be the memory managers job.  So, I write to some pre-defined
+&gt; queue of the memory manager, to say people can write msg&#39;s to me.  Now, any
+&gt; process can ask the memory manager where to put msg&#39;s to me.  If this is what
+&gt; you are thinking, it sort of makes sense.  But assumming we have a process/task
+&gt; boundary where each process has it&#39;s own virtual address space how can it break
+&gt; this barrier without the kernel&#39;s help?  I can sort of wrap my brain around
+&gt; this,
+&gt; but I keep comming back to crazy libc hacks.
+
+You are right, but we need the kernel&#39;s help only once during the whole
+process&#39; lifetime, i.e. when the new process is created and the shared 
+memory area chosen by the memory manager.  During the process creation,
+the address of this area could be written in some well-known location
+of the process&#39; address space.  This way there&#39;s no need for the process
+itself to query the memory manager each time it wants to send a message.
+
+Roberto
+
+</pre>
+  <hr/>
+  <div><strong>Date</strong>: Wed, 17 Jul 2002 14:53:27 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Tue, Jul 16, 2002 at 10:58:40PM +0200, Niels M?ller wrote:
+&gt; rreale@iol.it writes:
+&gt; 
+&gt; &gt; I&#39;ll try to roughly explain my idea, which doesn&#39;t apply
+&gt; &gt; to every IPC type, but only to a small subset thereof. This 
+&gt; &gt; subset includes the message passing between a client/server
+&gt; &gt; pair and among the servers themselves, with the additional
+&gt; &gt; constraint of very small pieces of data being passed at once.
+&gt; 
+&gt; I think the problem is that you have some memory shared between
+&gt; threads (of different processes). For now, I&#39;m assuming that this
+&gt; sharing is setup in advance by some memory manager or kernel
+&gt; mechanism.
+&gt; 
+&gt; But as several threads need to access the memory in parallell, you
+&gt; need to use some syncronization primitives (mutexes, condition
+&gt; variables, see any book on programming with threads) to coordinate
+&gt; access. And as far as I can see, that&#39;s hard to do without kernel help.
+
+Firstly thank you for your deep analysis. 
+You&#39;ve hit the very trouble of the whole matter. I think one approach 
+to the problem might be the following:
+
+a) when we refer to a server we are talking about core servers like
+   exec, init, and so on, which should be reasonably trustworthy;
+
+b) we cannot of course rely upon any assumption about how trustworthy
+   a client process is;
+
+c) we should design the system-wide queue in such a way that each subqueue
+   acts as a sort of ``water-tight compartement&#39;&#39;;
+
+d) mutexes might be implemented with flags in the data structure itself,
+   thus providing a form of ``non-mandatory locking&#39;&#39; on a per-subqueue
+   basis;
+
+e) clearly we suppose that both the server and the client (or clients)
+   will honour the locking policy; but if the client doesn&#39;t, only its
+   own subqueue gets corrupted, and the server might detect this by
+   some simple sanity checking on the data structure and cause the 
+   client&#39;s termination.
+
+f) for critical operations we may still use the traditional IPC method.
+
+&gt; One basic problem is: I&#39;m an idle server process, and I want to wait
+&gt; for a client to send me a message. How do I do that? There are two
+&gt; ways: Either I poll the structures regularly, or I need some basic ipc
+&gt; primitive, typically a wakeup call to a thread in a different process.
+&gt; In the former case, I&#39;ll either waste cpu time or get slow ipc
+&gt; response time, and for the latter case, it seems hard to do it
+&gt; completely in user space.
+
+Clearly an IPC mechanism that doesn&#39;t make use of the kernel might 
+become useful only in non-real-time applications, because it provides 
+no form of asynchronous I/O on the communication channels.  I would
+suggest that the system should switch between the traditional and the
+``new&#39;&#39; form of IPC according to the workload and the needs.
+
+&gt; So to give a good answer I think one first need a thourough
+&gt; understanding of how how threading primitives like mutexes and
+&gt; condition variables are implemented, and that&#39;s not really my area.
+
+Not mine either unfortunately...
+
+Roberto
+</pre>
+</body>
+</html>
