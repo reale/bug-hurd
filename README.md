@@ -2,6 +2,14 @@
 
 My mails to the bug-hurd mailing list, with replies.
 
+### A translator for the MINIX file system
+
+* [A translator for the MINIX file system](2003-07/00123.html), Roberto Reale, 2003/07/20 ([mbox](2003-07/00123.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-07/msg00123.html))
+    * [Re: A translator for the MINIX file system](2003-07/00124.html), Marco Gerards, 2003/07/20 ([mbox](2003-07/00124.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-07/msg00124.html))
+        * [Re: A translator for the MINIX file system](2003-07/00133.html), Roberto Reale, 2003/07/21 ([mbox](2003-07/00133.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-07/msg00133.html))
+            * [Re: A translator for the MINIX file system](2003-07/00134.html), Roberto Reale, 2003/07/21 ([mbox](2003-07/00134.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-07/msg00134.html))
+    * [Re: A translator for the MINIX file system](2003-07/00126.html), Robert Millan, 2003/07/20 ([mbox](2003-07/00126.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-07/msg00126.html))
+
 ### Message passing in user-land
 
 * [Message passing in user-land](2002-07/00225.html), Roberto Reale, 2002/07/15 ([mbox](2002-07/00225.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2002-07/msg00225.html))

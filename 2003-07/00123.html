@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00123.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <div><strong>Date</strong>: Sun, 20 Jul 2003 21:05:44 +0200</div>
+  <hr/>
+  <pre>Hi,
+
+  I am studying the Hurd and, as an exercise, have modified the ext2fs
+translator and adapted it to the MINIX file system.  This project is far
+from being finished, and, as yet, very little of the new translator does
+work.
+  Large portions of code are pretty confused and shall be rewritten, on
+account of some deep differences between the two file systems: for instance,
+the directory entries are of a fixed size in MINIX, hence the directory
+handling routines can be simplified and rewritten in a more ``natural&#39;&#39;
+way.
+  Of course, I will continue working at the translator, and will start in
+time a porting of the two utilities `mkfs.minix&#39; and `fsck.minix&#39; from
+`util-linux&#39;.
+  Although pretty useless now, the current version of the translator is
+to be found at
+
+  http://paideia.sourceforge.net/hurd-minixfs-0.01.tar.gz
+
+Thanks,
+Roberto Reale
+rreale@iol.it
+
+P.S.:  I have some perplexities about the proper way, in which one should
+update the copyright notice.  I have added a comment to each heading, to
+explain the the code has been modified by me, but have left unchanged the
+remainder, being uncertain whether I should update the copyright year too.
+For example,
+
+*** ext2fs/dir.c	Sun Jul 20 20:16:37 2003
+--- minixfs/dir.c	Sun Jul 20 20:16:44 2003
+***************
+*** 3,8 ****
+--- 3,11 ----
+     Copyright (C) 1994,95,96,97,98,99,2000,01,02 Free Software Foundation, Inc.
+     Converted for ext2fs by Miles Bader &lt;miles@gnu.org&gt;
+  
++    Modified for the MINIX filesystem from the original for the ext2
++    filesystem by Roberto Reale &lt;rreale@iol.it&gt;.
++ 
+     This program is free software; you can redistribute it and/or
+     modify it under the terms of the GNU General Public License as
+     published by the Free Software Foundation; either version 2, or (at
+
+Is this correct?
+</pre>
+</body>
+</html>

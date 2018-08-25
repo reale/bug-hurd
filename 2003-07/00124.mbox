@@ -1,0 +1,95 @@
+From MAILER-DAEMON Sun Jul 20 15:29:28 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.20)
+	id 19eJs8-0004HY-7g
+	for mharc-bug-hurd@gnu.org; Sun, 20 Jul 2003 15:29:28 -0400
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.20)
+	id 19eJs5-0004F5-MJ
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 15:29:25 -0400
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.20)
+	id 19eJpV-0002Eh-8o
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 15:26:45 -0400
+Received: from mail-cn.han.nl ([145.74.66.11])
+	by monty-python.gnu.org with esmtp (Exim 4.20) id 19eJp7-0001qz-7Y
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 15:26:21 -0400
+Received: from vscan-cn.han.nl (charlie.han.nl [145.74.66.9])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id BBF6C812B; Sun, 20 Jul 2003 21:26:15 +0200 (CEST)
+Received: from mail-cn.han.nl (mail-cn.han.nl [145.74.66.11])
+	by vscan-cn.han.nl (Postfix) with ESMTP
+	id 294511780D; Sun, 20 Jul 2003 21:26:15 +0200 (CEST)
+Received: from mail.han.nl (mail.han.nl [145.74.103.11])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id C4744812B; Sun, 20 Jul 2003 21:26:14 +0200 (CEST)
+Received: from marco.marco-g.com (hmm-dca-ap02-d09-108.dial.freesurf.nl
+	[195.18.86.108]) by mail.han.nl (Postfix) with ESMTP
+	id 1810EC045; Sun, 20 Jul 2003 21:26:08 +0200 (CEST)
+Sender: marco@marco.marco-g.com
+Mail-Copies-To: metgerards@student.han.nl
+To: rreale@iol.it
+References: <20030720190544.GA468@granada>
+From: Marco Gerards <metgerards@student.han.nl>
+Date: 20 Jul 2003 21:27:40 +0200
+In-Reply-To: <20030720190544.GA468@granada>
+Message-ID: <87k7adyp5f.fsf@marco.marco-g.com>
+Lines: 42
+User-Agent: Gnus/5.09 (Gnus v5.9.0) Emacs/21.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Virus-Scanned: by AMaViS snapshot-20020531@vscan-cn.han.nl
+Cc: bug-hurd@gnu.org
+Subject: Re: A translator for the MINIX file system
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Sun, 20 Jul 2003 19:29:26 -0000
+
+rreale@iol.it writes:
+
+> Hi,
+> 
+>   I am studying the Hurd and, as an exercise, have modified the ext2fs
+> translator and adapted it to the MINIX file system.  This project is
+> far from being finished, and, as yet, very little of the new
+> translator does work.
+
+ARG, I've written (but not finished) a similar translator. Still, it
+is cool to see someone is working on this :).
+
+Perhaps the todo list on savannah should be updated so it is known to
+everyone what is been worked on without spitting through the
+mailinglist archives... (I will propose some updates on savannah for
+the stuff I'm working on soon).
+
+>   Large portions of code are pretty confused and shall be rewritten,
+> on account of some deep differences between the two file systems: for
+> instance, the directory entries are of a fixed size in MINIX, hence
+> the directory handling routines can be simplified and rewritten in a
+> more ``natural'' way.
+
+True. You can have a look at fatfs (and the patches I sent in for
+fatfs) for example.
+
+>   Of course, I will continue working at the translator, and will start
+> in time a porting of the two utilities `mkfs.minix' and `fsck.minix'
+> from `util-linux'.
+
+Cool!
+
+>   Although pretty useless now, the current version of the translator
+> is to be found at
+> 
+>   http://paideia.sourceforge.net/hurd-minixfs-0.01.tar.gz
+
+Forbidden
+You don't have permission to access /hurd-minixfs-0.01.tar.gz on this server.
+
+Thanks,
+Marco

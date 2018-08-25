@@ -1,0 +1,88 @@
+From MAILER-DAEMON Mon Jul 21 11:26:15 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.20)
+	id 19ecXw-0001ML-2q
+	for mharc-bug-hurd@gnu.org; Mon, 21 Jul 2003 11:25:52 -0400
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.20)
+	id 19ecXl-0000fN-6D
+	for bug-hurd@gnu.org; Mon, 21 Jul 2003 11:25:41 -0400
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.20)
+	id 19ecX8-0007aj-Ma
+	for bug-hurd@gnu.org; Mon, 21 Jul 2003 11:25:03 -0400
+Received: from host184-204.pool80117.interbusiness.it ([80.117.204.184]
+	helo=granada) by monty-python.gnu.org with smtp (Exim 4.20)
+	id 19ecTc-0005io-3W
+	for bug-hurd@gnu.org; Mon, 21 Jul 2003 11:21:24 -0400
+Received: by granada (sSMTP sendmail emulation);
+	Mon, 21 Jul 2003 17:21:17 +0200
+From: "Roberto Reale" <rreale@iol.it>
+Date: Mon, 21 Jul 2003 17:21:17 +0200
+To: bug-hurd@gnu.org
+Message-ID: <20030721151910.GA717@granada>
+References: <20030720190544.GA468@granada> <87k7adyp5f.fsf@marco.marco-g.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87k7adyp5f.fsf@marco.marco-g.com>
+User-Agent: Mutt/1.3.28i
+Subject: Re: A translator for the MINIX file system
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Mon, 21 Jul 2003 15:25:50 -0000
+
+On Sun, Jul 20, 2003 at 09:27:40PM +0200, Marco Gerards wrote:
+> 
+> ARG, I've written (but not finished) a similar translator. Still, it
+> is cool to see someone is working on this :).
+> 
+> Perhaps the todo list on savannah should be updated so it is known to
+> everyone what is been worked on without spitting through the
+> mailinglist archives... (I will propose some updates on savannah for
+> the stuff I'm working on soon).
+> 
+  To say the truth, when I first began working at the translator, I
+neglected to ascertain whether a similar project already existed,
+because I only wanted to couple my first ``divings'' into the Hurd and
+the diskfs library with a practical exercise of programming, and
+happened to choose the MINIX file system on account of its simplicity
+and vague resemblance to its distant relation the Second Extended file
+system (I needed some working code to learn from, and to start with).
+  I am very glad that another programmer has been working at the same
+project though, and if you wish, when my code is more stable and
+mature we may merge our work.
+  I have found the greatest difficulty of implementing the MINIX file
+system on the Hurd to be hidden in the necessity of conciliating its
+huge limitations with the needs of a modern environment (e.g., the
+first version of the MINIX inode reserves only 8 bits for the UID!),
+and at the same time of retaining a full compatibility with older
+systems.
+  Therefore, there are a great many knotty points which I have been unable
+to solve in a straightforward way, and such points I shall be very happy to
+discuss with you.
+> 
+> >   Although pretty useless now, the current version of the translator
+> > is to be found at
+> > 
+> >   http://paideia.sourceforge.net/hurd-minixfs-0.01.tar.gz
+> 
+> Forbidden
+> You don't have permission to access /hurd-minixfs-0.01.tar.gz on this server.
+> 
+  I am sorry, I guiltily forgot to check the link.  Please use instead
+either [1] or [2].  Also, please be aware that this is an unstable, 
+mostly non-working, pre-alpha release.
+
+Thanks,
+Roberto Reale
+rreale@iol.it
+
+[1] http://paideia.sourceforge.net/index.html
+[2] http://prdownloads.sourceforge.net/paideia/hurd-minixfs-0.01.tar.gz?download

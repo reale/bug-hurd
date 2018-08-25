@@ -1,0 +1,83 @@
+From MAILER-DAEMON Sun Jul 20 15:09:07 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.20)
+	id 19eJWJ-00053W-OS
+	for mharc-bug-hurd@gnu.org; Sun, 20 Jul 2003 15:06:55 -0400
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.20)
+	id 19eJW0-0004zS-Ln
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 15:06:36 -0400
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.20)
+	id 19eJVp-0004tL-CW
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 15:06:25 -0400
+Received: from host100-231.pool62211.interbusiness.it ([62.211.231.100]
+	helo=granada) by monty-python.gnu.org with smtp (Exim 4.20)
+	id 19eJVJ-0004c8-BN
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 15:05:53 -0400
+Received: by granada (sSMTP sendmail emulation);
+	Sun, 20 Jul 2003 21:05:44 +0200
+From: rreale@iol.it
+Date: Sun, 20 Jul 2003 21:05:44 +0200
+To: bug-hurd@gnu.org
+Message-ID: <20030720190544.GA468@granada>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.3.28i
+Subject: A translator for the MINIX file system
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Sun, 20 Jul 2003 19:06:53 -0000
+
+Hi,
+
+  I am studying the Hurd and, as an exercise, have modified the ext2fs
+translator and adapted it to the MINIX file system.  This project is far
+from being finished, and, as yet, very little of the new translator does
+work.
+  Large portions of code are pretty confused and shall be rewritten, on
+account of some deep differences between the two file systems: for instance,
+the directory entries are of a fixed size in MINIX, hence the directory
+handling routines can be simplified and rewritten in a more ``natural''
+way.
+  Of course, I will continue working at the translator, and will start in
+time a porting of the two utilities `mkfs.minix' and `fsck.minix' from
+`util-linux'.
+  Although pretty useless now, the current version of the translator is
+to be found at
+
+  http://paideia.sourceforge.net/hurd-minixfs-0.01.tar.gz
+
+Thanks,
+Roberto Reale
+rreale@iol.it
+
+P.S.:  I have some perplexities about the proper way, in which one should
+update the copyright notice.  I have added a comment to each heading, to
+explain the the code has been modified by me, but have left unchanged the
+remainder, being uncertain whether I should update the copyright year too.
+For example,
+
+*** ext2fs/dir.c	Sun Jul 20 20:16:37 2003
+--- minixfs/dir.c	Sun Jul 20 20:16:44 2003
+***************
+*** 3,8 ****
+--- 3,11 ----
+     Copyright (C) 1994,95,96,97,98,99,2000,01,02 Free Software Foundation, Inc.
+     Converted for ext2fs by Miles Bader <miles@gnu.org>
+  
++    Modified for the MINIX filesystem from the original for the ext2
++    filesystem by Roberto Reale <rreale@iol.it>.
++ 
+     This program is free software; you can redistribute it and/or
+     modify it under the terms of the GNU General Public License as
+     published by the Free Software Foundation; either version 2, or (at
+
+Is this correct?

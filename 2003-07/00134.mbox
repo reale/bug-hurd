@@ -1,0 +1,52 @@
+From MAILER-DAEMON Mon Jul 21 14:57:07 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.20)
+	id 19efaO-0004KL-Uh
+	for mharc-bug-hurd@gnu.org; Mon, 21 Jul 2003 14:40:36 -0400
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.20)
+	id 19efZT-00044J-D0
+	for bug-hurd@gnu.org; Mon, 21 Jul 2003 14:39:39 -0400
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.20)
+	id 19eemP-0001VJ-VG
+	for bug-hurd@gnu.org; Mon, 21 Jul 2003 13:49:00 -0400
+Received: from host229-204.pool80117.interbusiness.it ([80.117.204.229]
+	helo=granada) by monty-python.gnu.org with smtp (Exim 4.20)
+	id 19eegj-0008GG-0I
+	for bug-hurd@gnu.org; Mon, 21 Jul 2003 13:43:05 -0400
+Received: by granada (sSMTP sendmail emulation);
+	Mon, 21 Jul 2003 19:43:03 +0200
+From: "Roberto Reale" <rreale@iol.it>
+Date: Mon, 21 Jul 2003 19:43:03 +0200
+To: bug-hurd@gnu.org
+Message-ID: <20030721174141.GA306@granada>
+References: <20030720190544.GA468@granada> <87k7adyp5f.fsf@marco.marco-g.com>
+	<20030721151910.GA717@granada>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20030721151910.GA717@granada>
+User-Agent: Mutt/1.3.28i
+Subject: Re: A translator for the MINIX file system
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Mon, 21 Jul 2003 18:40:35 -0000
+
+On Mon, Jul 21, 2003 at 05:21:17PM +0200, Roberto Reale wrote:
+> huge limitations with the needs of a modern environment (e.g., the
+> first version of the MINIX inode reserves only 8 bits for the UID!),
+
+  Apparently, I am unable to get rid of my very bad habit of not re-reading
+a message until I have sent it...  What I meant to say, is, of course, that
+the old MINIX file system used to reserve in its inodes 8 bits for the 
+group ID (not the UID).
+
+Thanks,
+Roberto

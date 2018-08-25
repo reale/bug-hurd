@@ -1,0 +1,58 @@
+From MAILER-DAEMON Sun Jul 20 20:24:03 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.20)
+	id 19eOSp-0007HQ-Hn
+	for mharc-bug-hurd@gnu.org; Sun, 20 Jul 2003 20:23:39 -0400
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.20)
+	id 19eOSm-0007DA-8s
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 20:23:36 -0400
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.20)
+	id 19eOSk-0007AF-JK
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 20:23:34 -0400
+Received: from 86.red-80-24-13.pooles.rima-tde.net ([80.24.13.86] helo=aragorn)
+	by monty-python.gnu.org with esmtp (Exim 4.20) id 19eOSk-00075x-1o
+	for bug-hurd@gnu.org; Sun, 20 Jul 2003 20:23:34 -0400
+Received: from rmh by aragorn with local (Exim 3.36 #1 (Debian))
+	id 19eQLY-00009z-00; Mon, 21 Jul 2003 02:24:16 +0000
+Date: Mon, 21 Jul 2003 02:24:16 +0000
+From: Robert Millan <zeratul2@wanadoo.es>
+To: rreale@iol.it
+Message-ID: <20030721022416.GA605@aragorn>
+References: <20030720190544.GA468@granada>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20030720190544.GA468@granada>
+Organisation: free as in freedom
+User-Agent: Mutt/1.5.4i
+Sender: <rmh@debian.org>
+Cc: bug-hurd@gnu.org
+Subject: Re: A translator for the MINIX file system
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Mon, 21 Jul 2003 00:23:37 -0000
+
+On Sun, Jul 20, 2003 at 09:05:44PM +0200, rreale@iol.it wrote:
+>   Of course, I will continue working at the translator, and will start in
+> time a porting of the two utilities `mkfs.minix' and `fsck.minix' from
+> `util-linux'.
+
+They were ported already, by Guillem Jover. The patch is merged in debian
+package (in unstable):
+
+http://packages.debian.org/util-linux
+
+It is actualy contained in the util-linux_*.diff.gz file. If someone has
+time to, it'd be nice to update it for latest upstream version of util-linux
+and send it to the upstream maintainers.
+
+-- 
+Robert Millan
