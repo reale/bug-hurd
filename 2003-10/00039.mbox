@@ -1,0 +1,59 @@
+From MAILER-DAEMON Tue Oct 14 07:10:46 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1A9N4F-0004au-Io
+	for mharc-bug-hurd@gnu.org; Tue, 14 Oct 2003 07:10:19 -0400
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1A9N41-0004Sr-6g
+	for bug-hurd@gnu.org; Tue, 14 Oct 2003 07:10:05 -0400
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1A9N0p-0003DI-Iw
+	for bug-hurd@gnu.org; Tue, 14 Oct 2003 07:07:18 -0400
+Received: from [151.26.64.146] (helo=siviglia)
+	by monty-python.gnu.org with smtp (Exim 4.24) id 1A9N09-00033a-8X
+	for bug-hurd@gnu.org; Tue, 14 Oct 2003 07:06:06 -0400
+Received: by siviglia (sSMTP sendmail emulation);
+	Tue, 14 Oct 2003 13:07:09 +0200
+From: "Roberto Reale" <rreale@iol.it>
+Date: Tue, 14 Oct 2003 13:07:09 +0200
+To: bug-hurd@gnu.org
+Message-ID: <20031014110709.GA18717@mail.siviglia.cr>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.3.28i
+Subject: MINIX fs translator - new alpha release
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Tue, 14 Oct 2003 11:10:15 -0000
+
+  Hi,
+
+  I've made a new release (0.03) of the MINIX fs translator at which
+I'm working (a modified version of the Ext2 translator, actually).  It
+still lacks good stability, yet some very nasty bugs (and very silly
+ones, too, which I myself introduced during the process of adapting
+the Ext2 code) have been fixed and, although very fitfully, it appears
+to work.
+
+  As one would expect of an alpha release, the code still needs a good
+deal of polishing and revising.  If you would like to cast a glance at
+it, and perhaps also try it, I shall be glad to receive suggestions,
+criticism and especially bug reports.
+
+  The translator is available at
+
+http://paideia.sourceforge.net/index.html
+http://prdownloads.sourceforge.net/paideia/hurd-minixfs-0.03.tar.gz?download
+
+  Thanks,
+Roberto Reale
+rreale@iol.it
