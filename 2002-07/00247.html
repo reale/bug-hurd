@@ -5,32 +5,40 @@
     <title>00247.mbox</title>
   </head>
   <body>
-  <div><strong>Date</strong>: Wed, 17 Jul 2002 13:30:31 +0200</div>
-  <div><strong>From</strong>: rreale@iol.it</div>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 22:58:40 +0200</div>
   <hr/>
-  <pre>On Tue, Jul 16, 2002 at 12:44:07PM -0700, James Morrison wrote:
-&gt; 
-&gt; 
-&gt;  Ok, so it looks like every process maintains it&#39;s own set of queues.  So
-&gt; I am a server process and I setup 3 queues for clients to write in.  Now,
-&gt; how do the clients know where to write the data so I can find it?  Previously,
-&gt; you said it would be the memory managers job.  So, I write to some pre-defined
-&gt; queue of the memory manager, to say people can write msg&#39;s to me.  Now, any
-&gt; process can ask the memory manager where to put msg&#39;s to me.  If this is what
-&gt; you are thinking, it sort of makes sense.  But assumming we have a process/task
-&gt; boundary where each process has it&#39;s own virtual address space how can it break
-&gt; this barrier without the kernel&#39;s help?  I can sort of wrap my brain around
-&gt; this,
-&gt; but I keep comming back to crazy libc hacks.
+  <pre>rreale@iol.it writes:
 
-You are right, but we need the kernel&#39;s help only once during the whole
-process&#39; lifetime, i.e. when the new process is created and the shared 
-memory area chosen by the memory manager.  During the process creation,
-the address of this area could be written in some well-known location
-of the process&#39; address space.  This way there&#39;s no need for the process
-itself to query the memory manager each time it wants to send a message.
+&gt; I&#39;ll try to roughly explain my idea, which doesn&#39;t apply
+&gt; to every IPC type, but only to a small subset thereof. This 
+&gt; subset includes the message passing between a client/server
+&gt; pair and among the servers themselves, with the additional
+&gt; constraint of very small pieces of data being passed at once.
 
-Roberto
+I think the problem is that you have some memory shared between
+threads (of different processes). For now, I&#39;m assuming that this
+sharing is setup in advance by some memory manager or kernel
+mechanism.
+
+But as several threads need to access the memory in parallell, you
+need to use some syncronization primitives (mutexes, condition
+variables, see any book on programming with threads) to coordinate
+access. And as far as I can see, that&#39;s hard to do without kernel help.
+
+One basic problem is: I&#39;m an idle server process, and I want to wait
+for a client to send me a message. How do I do that? There are two
+ways: Either I poll the structures regularly, or I need some basic ipc
+primitive, typically a wakeup call to a thread in a different process.
+In the former case, I&#39;ll either waste cpu time or get slow ipc
+response time, and for the latter case, it seems hard to do it
+completely in user space.
+
+So to give a good answer I think one first need a thourough
+understanding of how how threading primitives like mutexes and
+condition variables are implemented, and that&#39;s not really my area.
+
+/Niels
 </pre>
 </body>
 </html>
