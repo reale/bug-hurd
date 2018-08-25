@@ -2,6 +2,12 @@
 
 My mails to the bug-hurd mailing list, with replies.
 
+### A couple of typos in the ext2fs translator
+
+* [[PATCH] A couple of typos in the ext2fs translator.](2004-01/00023.html), Roberto Reale, 2004/01/10 ([mbox](2004-01/00023.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2004-01/msg00023.html))
+    * [Re: [PATCH] A couple of typos in the ext2fs translator.](2004-01/00024.html), Marco Gerards, 2004/01/10 ([mbox](2004-01/00024.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2004-01/msg00024.html))
+    * [Re: [PATCH] A couple of typos in the ext2fs translator.](2004-01/00025.html), Roland McGrath, 2004/01/10 ([mbox](2004-01/00025.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2004-01/msg00025.html))
+
 ### Touching the way some diskfs routines handle access faults
 
 * [Touching the way some diskfs routines handle access faults.](2003-11/00093.html), Roberto Reale, 2003/11/28 ([mbox](2003-11/00093.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-11/msg00093.html))

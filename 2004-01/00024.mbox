@@ -1,0 +1,68 @@
+From MAILER-DAEMON Sat Jan 10 11:41:58 2004
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1AfMBR-00037F-Os
+	for mharc-bug-hurd@gnu.org; Sat, 10 Jan 2004 11:41:57 -0500
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1AfMBP-00036V-1N
+	for bug-hurd@gnu.org; Sat, 10 Jan 2004 11:41:55 -0500
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1AfMAr-0002Qx-3F
+	for bug-hurd@gnu.org; Sat, 10 Jan 2004 11:41:52 -0500
+Received: from [145.74.66.11] (helo=mail-cn.han.nl)
+	by monty-python.gnu.org with esmtp (Exim 4.24) id 1AfMAp-0002Ox-Jh
+	for bug-hurd@gnu.org; Sat, 10 Jan 2004 11:41:19 -0500
+Received: from localhost (charlie.han.nl [145.74.66.9])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id 75FD180CA; Sat, 10 Jan 2004 16:37:17 +0100 (CET)
+Received: from mail-cn.han.nl ([145.74.66.11])
+	by localhost (charlie.han.nl [145.74.66.9]) (amavisd-new, port 10024)
+	with ESMTP id 10140-07; Sat, 10 Jan 2004 16:37:14 +0100 (CET)
+Received: from mail.han.nl (mail.han.nl [145.74.103.11])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id A69A48088; Sat, 10 Jan 2004 16:37:13 +0100 (CET)
+Received: from marco.marco-g.com (1Cust136.tnt37.rtm1.nld.da.uu.net
+	[213.116.168.136]) by mail.han.nl (Postfix) with ESMTP
+	id 2E86BC045; Sat, 10 Jan 2004 16:37:00 +0100 (CET)
+Sender: marco@marco.marco-g.com
+Mail-Copies-To: metgerards@student.han.nl
+To: "Roberto Reale" <rreale@iol.it>
+References: <20040110112526.GA31486@mail.siviglia.cr>
+From: Marco Gerards <metgerards@student.han.nl>
+Date: 10 Jan 2004 16:37:26 +0100
+In-Reply-To: <20040110112526.GA31486@mail.siviglia.cr>
+Message-ID: <87brpb4xxl.fsf@marco.marco-g.com>
+Lines: 15
+User-Agent: Gnus/5.09 (Gnus v5.9.0) Emacs/21.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Virus-Scanned: by amavisd-new@vscan-cn.han.nl
+Cc: bug-hurd@gnu.org
+Subject: Re: [PATCH] A couple of typos in the ext2fs translator.
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Sat, 10 Jan 2004 16:41:55 -0000
+
+"Roberto Reale" <rreale@iol.it> writes:
+
+Hi,
+
+> here is a tiny patch which corrects a couple of typos in the ext2fs
+> translator.
+
+Thanks a lot for telling us about these typos.
+
+IIRC typos will get fixed when someone works on this part of the
+code.  IIRC someone had a list of typos (Marcus?).  Perhaps Ognyan can
+change this in his patch...
+
+Thanks,
+Marco

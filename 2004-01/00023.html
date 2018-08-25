@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00023.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: Roberto Reale &lt;rreale@iol.it&gt;</div>
+  <div><strong>Date</strong>: Sat, 10 Jan 2004 12:26:31 +0100</div>
+  <hr/>
+  <pre>  Hi,
+
+here is a tiny patch which corrects a couple of typos in the ext2fs
+translator.
+
+Thanks,
+Roberto Reale
+&lt;rreale@iol.it&gt;
+
+2004-01-10  Roberto Reale  &lt;rreale@iol.it&gt;
+
+	* ext2fs.h (ext2_getblk): Fix typo in documentation.
+	* getblk.c (ext2_getblk): Likewise.
+	* dir.c (diskfs_get_directs): Likewise.
+
+diff -u ext2fs.bak/dir.c ext2fs/dir.c
+--- ext2fs.bak/dir.c	Sat Jan 10 10:35:10 2004
++++ ext2fs/dir.c	Sat Jan 10 10:51:54 2004
+@@ -857,7 +857,7 @@
+    Must be a power of two.  */
+ #define DIRENT_ALIGN 4
+ 
+-/* Implement the disikfs_get_directs callback as described in
++/* Implement the diskfs_get_directs callback as described in
+    &lt;hurd/diskfs.h&gt;. */
+ error_t
+ diskfs_get_directs (struct node *dp,
+diff -u ext2fs.bak/ext2fs.h ext2fs/ext2fs.h
+--- ext2fs.bak/ext2fs.h	Sat Jan 10 10:34:44 2004
++++ ext2fs/ext2fs.h	Sat Jan 10 10:51:31 2004
+@@ -408,7 +408,7 @@
+ 
+ void ext2_discard_prealloc (struct node *node);
+ 
+-/* Returns in DISK_BLOCK the disk block correspding to BLOCK in NODE.  If
++/* Returns in DISK_BLOCK the disk block corresponding to BLOCK in NODE.  If
+    there is no such block yet, but CREATE is true, then it is created,
+    otherwise EINVAL is returned.  */
+ error_t ext2_getblk (struct node *node, block_t block, int create, block_t *disk_block);
+diff -u ext2fs.bak/getblk.c ext2fs/getblk.c
+--- ext2fs.bak/getblk.c	Sat Jan 10 10:34:57 2004
++++ ext2fs/getblk.c	Sat Jan 10 10:51:44 2004
+@@ -225,7 +225,7 @@
+   return 0;
+ }
+ 
+-/* Returns in DISK_BLOCK the disk block correspding to BLOCK in NODE.  If
++/* Returns in DISK_BLOCK the disk block corresponding to BLOCK in NODE.  If
+    there is no such block yet, but CREATE is true, then it is created,
+    otherwise EINVAL is returned.  */
+ error_t
+</pre>
+</body>
+</html>

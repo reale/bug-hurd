@@ -1,0 +1,50 @@
+From MAILER-DAEMON Sat Jan 10 19:02:38 2004
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1AfSnp-0007fC-3F
+	for mharc-bug-hurd@gnu.org; Sat, 10 Jan 2004 18:46:01 -0500
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1AfSnW-0007dA-Mi
+	for bug-hurd@gnu.org; Sat, 10 Jan 2004 18:45:42 -0500
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1AfSmx-0007WI-CL
+	for bug-hurd@gnu.org; Sat, 10 Jan 2004 18:45:38 -0500
+Received: from [128.52.32.80] (helo=life.ai.mit.edu)
+	by monty-python.gnu.org with esmtp (Exim 4.24) id 1AfSmx-0007WC-0T
+	for bug-hurd@gnu.org; Sat, 10 Jan 2004 18:45:07 -0500
+Received: from perdition.linnaean.org (dsl092-073-217.bos1.dsl.speakeasy.net
+	[66.92.73.217]) by life.ai.mit.edu
+	(8.12.10/8.12.9/BASENAME(ai.master.life-8.12.9.mc,.mc):RCS_REVISION(Revision:
+	1.23)) with ESMTP id i0AM9Dvn026765; 
+	Sat, 10 Jan 2004 17:09:13 -0500 (EST)
+Received: by perdition.linnaean.org (Postfix, from userid 5281)
+	id 742211BA47; Sat, 10 Jan 2004 17:09:13 -0500 (EST)
+From: Roland McGrath <roland@frob.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+To: "Roberto Reale" <rreale@iol.it>
+In-Reply-To: Roberto Reale's message of  Saturday,
+	10 January 2004 12:26:31 +0100
+	<20040110112526.GA31486@mail.siviglia.cr>
+X-Zippy-Says: BELA LUGOSI is my co-pilot..
+Message-Id: <20040110220913.742211BA47@perdition.linnaean.org>
+Date: Sat, 10 Jan 2004 17:09:13 -0500 (EST)
+Cc: bug-hurd@gnu.org
+Subject: Re: [PATCH] A couple of typos in the ext2fs translator.
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Sat, 10 Jan 2004 23:45:44 -0000
+
+> here is a tiny patch which corrects a couple of typos in the ext2fs
+> translator.
+
+Thanks, I've put in those comment typo fixes.
