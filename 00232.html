@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00232.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: David Walter &lt;dwalter@syr.edu&gt;</div>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 13:29:03 -0400</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; On Mon, Jul 15, 2002 at 08:03:55AM -0700, James Morrison wrote:
+&gt;&gt;  Who delegates where the shared memory is
+&gt;
+&gt; But, I think, whatever component does now memory management.
+&gt;
+&gt;&gt;  and who has access to it?
+&gt;
+&gt; Of  course, the processes  involved  in message passing.   I&#39;ve some
+&gt; vague ideas on how this could  be performed, but  because of my poor
+&gt; English it&#39;s not so simple  for me to  put them down.  Nevertheless,
+&gt; if you think it&#39;s not wholly time lost, I&#39;ll try to do my best.
+
+
+
+There is a dependency on someone  arbitrating who has control over the
+memory.  Eventually it boils down to one of two models (oversimplified
+but hopefully this will help clarify things)
+
+    1.  Some   priviledged user/process   determines  which memory  is
+    available for communication.
+
+
+    2. A free for all, anyone  can arbitrarily choose to negotiate who
+    to communicate with, and or which memory to use.
+
+
+In  traditional  multi{user,tasking}  OS   design  the  kernel  or   a
+supervisory program   running with  some  special  priviledge  accepts
+requests and grants(or denies) communication channels or allocation of
+memory [1].   In  a   microkernel design,  this  may  be  left  to  an
+independent  &#39;user  space&#39; process,   but   still  it  runs  with  the
+priviledge of making the decision.
+
+
+In  [2] the process can  access memory as  it wants.  One problem with
+[2] is  that, (as in  {IBM-PC/MS}/DOS) a mis-behaving or  evil process
+can access memory which is being used by other processes.  In the case
+of an errant uninitialized or   faulty pointer, the address can  cause
+_bad_(TM) things to occur.
+
+Bad things include overwriting memory in other programs address space,
+including  device drivers  and system resources.   Imagine overwriting
+the console driver&#39;s  interface,   or replacing an  interrupt  vectors
+pointer to point to a memory location with your evil routine, then you
+can capture keystrokes, or lock the machine.
+
+This type of   problem   (lockup&#39;s  or freezing or   misbehaviour   of
+programs)  was a  frequent occurrence  with   pc&#39;s, up  to the current
+implementations of windows (non/NT (aka OS/2) kernel).
+
+
+HTH.
+--
+Hope springs eternal!
+
+/^\
+\ /     ASCII RIBBON CAMPAIGN
+ X        AGAINST HTML MAIL
+/ \
+</pre>
+</body>
+</html>

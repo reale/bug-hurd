@@ -1,0 +1,59 @@
+From nisse@lysator.liu.se Tue Jul 16 10:09:19 2002
+Received: from mail.lysator.liu.se ([130.236.254.3])
+	by fencepost.gnu.org with esmtp (Exim 3.35 #1 (Debian))
+	id 17UT0x-0005pS-00
+	for <bug-hurd@gnu.org>; Tue, 16 Jul 2002 10:09:19 -0400
+Received: from fafner.lysator.liu.se (fafner.lysator.liu.se [130.236.254.31])
+	by mail.lysator.liu.se (Postfix) with ESMTP
+	id E351383656A; Tue, 16 Jul 2002 16:09:17 +0200 (MET DST)
+Received: (from nisse@localhost)
+	by fafner.lysator.liu.se (8.9.3/8.8.7) id QAA21417;
+	Tue, 16 Jul 2002 16:09:17 +0200 (MEST)
+X-Authentication-Warning: fafner.lysator.liu.se: nisse set sender to nisse@lysator.liu.se using -f
+To: rreale@iol.it
+Cc: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+References: <20020715122155.A2600@mail.eq.cr>
+	<20020715111330.GD432@212.23.136.22> <20020715163821.A5411@mail.eq.cr>
+	<nn8z4chv6j.fsf@fafner.lysator.liu.se>
+	<20020716122633.A10240@mail.eq.cr>
+Content-type: text/plain; charset=iso-8859-1
+Content-transfer-encoding: 8bit
+From: nisse@lysator.liu.se (Niels =?iso-8859-1?q?M=F6ller?=)
+Date: 16 Jul 2002 16:09:16 +0200
+In-Reply-To: <20020716122633.A10240@mail.eq.cr>
+Message-ID: <nnit3fhiib.fsf@fafner.lysator.liu.se>
+Lines: 17
+User-Agent: Gnus/5.09 (Gnus v5.9.0) Emacs/21.2
+MIME-Version: 1.0
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+rreale@iol.it writes:
+
+> But how much performance imprevement would we achieve if we created such
+> a mechanism, only for pure data?
+
+The fastest way to do it that I can imagine, for the simplest case of
+mutually trusting processes, is to have a (possibly) short message
+queue, protected by a mutex and some condition variables, all in th
+eshared memory page. It's not obvious to me if that will be slower or
+faster than L4 ipc that can pass the data in registers.
+
+Furthermore, I have never implemented mutexes and condition variables,
+but I wouldn't be surprised if some syscall is needed for conditions
+to propagate between threads or processes.
+
+Regards,
+/Niels

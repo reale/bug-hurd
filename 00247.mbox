@@ -1,0 +1,56 @@
+From rreale@iol.it Wed Jul 17 07:30:17 2002
+Received: from ppp-248-61.26-151.libero.it ([151.26.61.248] helo=localhost.localdomain)
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17Un0a-0007tq-00
+	for <bug-hurd@gnu.org>; Wed, 17 Jul 2002 07:30:17 -0400
+Received: from rreale by localhost.localdomain with local (Exim 3.12 #1 (Debian))
+	id 17Un0p-0000RE-00
+	for <bug-hurd@gnu.org>; Wed, 17 Jul 2002 13:30:31 +0200
+Date: Wed, 17 Jul 2002 13:30:31 +0200
+To: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+Message-ID: <20020717133031.A931@mail.eq.cr>
+References: <20020716181737.A2261@mail.eq.cr> <20020716194407.23846.qmail@web14607.mail.yahoo.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.2.5i
+In-Reply-To: <20020716194407.23846.qmail@web14607.mail.yahoo.com>; from rocketmail_com@rocketmail.com on Tue, Jul 16, 2002 at 12:44:07PM -0700
+From: rreale@iol.it
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+On Tue, Jul 16, 2002 at 12:44:07PM -0700, James Morrison wrote:
+> 
+> 
+>  Ok, so it looks like every process maintains it's own set of queues.  So
+> I am a server process and I setup 3 queues for clients to write in.  Now,
+> how do the clients know where to write the data so I can find it?  Previously,
+> you said it would be the memory managers job.  So, I write to some pre-defined
+> queue of the memory manager, to say people can write msg's to me.  Now, any
+> process can ask the memory manager where to put msg's to me.  If this is what
+> you are thinking, it sort of makes sense.  But assumming we have a process/task
+> boundary where each process has it's own virtual address space how can it break
+> this barrier without the kernel's help?  I can sort of wrap my brain around
+> this,
+> but I keep comming back to crazy libc hacks.
+
+You are right, but we need the kernel's help only once during the whole
+process' lifetime, i.e. when the new process is created and the shared 
+memory area chosen by the memory manager.  During the process creation,
+the address of this area could be written in some well-known location
+of the process' address space.  This way there's no need for the process
+itself to query the memory manager each time it wants to send a message.
+
+Roberto

@@ -1,0 +1,98 @@
+From rreale@iol.it Wed Jul 17 08:53:13 2002
+Received: from ppp-29-66.26-151.libero.it ([151.26.66.29] helo=localhost.localdomain)
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17UoIq-0003Cv-00
+	for <bug-hurd@gnu.org>; Wed, 17 Jul 2002 08:53:12 -0400
+Received: from rreale by localhost.localdomain with local (Exim 3.12 #1 (Debian))
+	id 17UoJ5-0000oG-00
+	for <bug-hurd@gnu.org>; Wed, 17 Jul 2002 14:53:27 +0200
+Date: Wed, 17 Jul 2002 14:53:27 +0200
+To: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+Message-ID: <20020717145327.B931@mail.eq.cr>
+References: <20020715122155.A2600@mail.eq.cr> <20020715111330.GD432@212.23.136.22> <20020715163821.A5411@mail.eq.cr> <nn8z4chv6j.fsf@fafner.lysator.liu.se> <20020716122633.A10240@mail.eq.cr> <nnit3fhiib.fsf@fafner.lysator.liu.se> <20020716181737.A2261@mail.eq.cr> <nn65zfgzjz.fsf@fafner.lysator.liu.se>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.2.5i
+In-Reply-To: <nn65zfgzjz.fsf@fafner.lysator.liu.se>; from nisse@lysator.liu.se on Tue, Jul 16, 2002 at 10:58:40PM +0200
+From: rreale@iol.it
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+On Tue, Jul 16, 2002 at 10:58:40PM +0200, Niels M?ller wrote:
+> rreale@iol.it writes:
+> 
+> > I'll try to roughly explain my idea, which doesn't apply
+> > to every IPC type, but only to a small subset thereof. This 
+> > subset includes the message passing between a client/server
+> > pair and among the servers themselves, with the additional
+> > constraint of very small pieces of data being passed at once.
+> 
+> I think the problem is that you have some memory shared between
+> threads (of different processes). For now, I'm assuming that this
+> sharing is setup in advance by some memory manager or kernel
+> mechanism.
+> 
+> But as several threads need to access the memory in parallell, you
+> need to use some syncronization primitives (mutexes, condition
+> variables, see any book on programming with threads) to coordinate
+> access. And as far as I can see, that's hard to do without kernel help.
+
+Firstly thank you for your deep analysis. 
+You've hit the very trouble of the whole matter. I think one approach 
+to the problem might be the following:
+
+a) when we refer to a server we are talking about core servers like
+   exec, init, and so on, which should be reasonably trustworthy;
+
+b) we cannot of course rely upon any assumption about how trustworthy
+   a client process is;
+
+c) we should design the system-wide queue in such a way that each subqueue
+   acts as a sort of ``water-tight compartement'';
+
+d) mutexes might be implemented with flags in the data structure itself,
+   thus providing a form of ``non-mandatory locking'' on a per-subqueue
+   basis;
+
+e) clearly we suppose that both the server and the client (or clients)
+   will honour the locking policy; but if the client doesn't, only its
+   own subqueue gets corrupted, and the server might detect this by
+   some simple sanity checking on the data structure and cause the 
+   client's termination.
+
+f) for critical operations we may still use the traditional IPC method.
+
+> One basic problem is: I'm an idle server process, and I want to wait
+> for a client to send me a message. How do I do that? There are two
+> ways: Either I poll the structures regularly, or I need some basic ipc
+> primitive, typically a wakeup call to a thread in a different process.
+> In the former case, I'll either waste cpu time or get slow ipc
+> response time, and for the latter case, it seems hard to do it
+> completely in user space.
+
+Clearly an IPC mechanism that doesn't make use of the kernel might 
+become useful only in non-real-time applications, because it provides 
+no form of asynchronous I/O on the communication channels.  I would
+suggest that the system should switch between the traditional and the
+``new'' form of IPC according to the workload and the needs.
+
+> So to give a good answer I think one first need a thourough
+> understanding of how how threading primitives like mutexes and
+> condition variables are implemented, and that's not really my area.
+
+Not mine either unfortunately...
+
+Roberto

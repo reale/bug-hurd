@@ -1,0 +1,54 @@
+From rocketmail_com@rocketmail.com Mon Jul 15 11:04:00 2002
+Received: from web14601.mail.yahoo.com ([216.136.224.79])
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17U7OK-00021G-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 11:04:00 -0400
+Message-ID: <20020715150355.85923.qmail@web14601.mail.yahoo.com>
+Received: from [129.97.105.10] by web14601.mail.yahoo.com via HTTP; Mon, 15 Jul 2002 08:03:55 PDT
+Date: Mon, 15 Jul 2002 08:03:55 -0700 (PDT)
+From: James Morrison <rocketmail_com@rocketmail.com>
+Reply-To: ja2morri@student.math.uwaterloo.ca
+Subject: Re: Message passing in user-land
+To: rreale@iol.it, bug-hurd@gnu.org
+In-Reply-To: <20020715163821.A5411@mail.eq.cr>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+--- rreale@iol.it wrote:
+> On Mon, Jul 15, 2002 at 01:13:30PM +0200, Marcus Brinkmann wrote:
+> > On Mon, Jul 15, 2002 at 12:21:55PM +0200, rreale@iol.it wrote:
+> > > Why we can't implement message passing entirely in user-space rather
+> > > than in the kernel?
+> > 
+> > Imagine you remove all IPC from the kernel.  How do you send a user-space
+> > message to another process?  You can't.
+>  
+> But isn't it possible to build a sort of mechanism based on shared memory,
+> thus avoiding the passage across the kernel?
+> 
+> Roberto
+> 
+
+ Who delegates where the shared memory is and who has access to it?
+
+=====
+James Morrison
+   University of Waterloo
+   Computer Science - Digital Hardware
+   2A co-op
+http://hurd.dyndns.org
+
+Anyone referring to this as 'Open Source' shall be eaten by a GNU

@@ -1,0 +1,41 @@
+From rreale@iol.it Mon Jul 15 06:21:42 2002
+Received: from ppp-80-63.26-151.libero.it ([151.26.63.80] helo=localhost.localdomain)
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17U2z6-0007j6-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 06:21:42 -0400
+Received: from rreale by localhost.localdomain with local (Exim 3.12 #1 (Debian))
+	id 17U2zL-0000gh-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 12:21:55 +0200
+Date: Mon, 15 Jul 2002 12:21:55 +0200
+To: bug-hurd@gnu.org
+Subject: Message passing in user-land
+Message-ID: <20020715122155.A2600@mail.eq.cr>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.2.5i
+From: rreale@iol.it
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+Hi,
+
+I'm a beginning GNU user and a second-rate programmer, yet
+I'm attracted by the Free Software philosophy and even more by
+OS design.  Indeed, I've a small question about the Hurd:
+
+Why we can't implement message passing entirely in user-space rather
+than in the kernel?
+
+Roberto

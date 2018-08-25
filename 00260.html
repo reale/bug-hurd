@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00260.mbox</title>
+  </head>
+  <body>
+  <div><strong>Date</strong>: Wed, 17 Jul 2002 14:53:27 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Tue, Jul 16, 2002 at 10:58:40PM +0200, Niels M?ller wrote:
+&gt; rreale@iol.it writes:
+&gt; 
+&gt; &gt; I&#39;ll try to roughly explain my idea, which doesn&#39;t apply
+&gt; &gt; to every IPC type, but only to a small subset thereof. This 
+&gt; &gt; subset includes the message passing between a client/server
+&gt; &gt; pair and among the servers themselves, with the additional
+&gt; &gt; constraint of very small pieces of data being passed at once.
+&gt; 
+&gt; I think the problem is that you have some memory shared between
+&gt; threads (of different processes). For now, I&#39;m assuming that this
+&gt; sharing is setup in advance by some memory manager or kernel
+&gt; mechanism.
+&gt; 
+&gt; But as several threads need to access the memory in parallell, you
+&gt; need to use some syncronization primitives (mutexes, condition
+&gt; variables, see any book on programming with threads) to coordinate
+&gt; access. And as far as I can see, that&#39;s hard to do without kernel help.
+
+Firstly thank you for your deep analysis. 
+You&#39;ve hit the very trouble of the whole matter. I think one approach 
+to the problem might be the following:
+
+a) when we refer to a server we are talking about core servers like
+   exec, init, and so on, which should be reasonably trustworthy;
+
+b) we cannot of course rely upon any assumption about how trustworthy
+   a client process is;
+
+c) we should design the system-wide queue in such a way that each subqueue
+   acts as a sort of ``water-tight compartement&#39;&#39;;
+
+d) mutexes might be implemented with flags in the data structure itself,
+   thus providing a form of ``non-mandatory locking&#39;&#39; on a per-subqueue
+   basis;
+
+e) clearly we suppose that both the server and the client (or clients)
+   will honour the locking policy; but if the client doesn&#39;t, only its
+   own subqueue gets corrupted, and the server might detect this by
+   some simple sanity checking on the data structure and cause the 
+   client&#39;s termination.
+
+f) for critical operations we may still use the traditional IPC method.
+
+&gt; One basic problem is: I&#39;m an idle server process, and I want to wait
+&gt; for a client to send me a message. How do I do that? There are two
+&gt; ways: Either I poll the structures regularly, or I need some basic ipc
+&gt; primitive, typically a wakeup call to a thread in a different process.
+&gt; In the former case, I&#39;ll either waste cpu time or get slow ipc
+&gt; response time, and for the latter case, it seems hard to do it
+&gt; completely in user space.
+
+Clearly an IPC mechanism that doesn&#39;t make use of the kernel might 
+become useful only in non-real-time applications, because it provides 
+no form of asynchronous I/O on the communication channels.  I would
+suggest that the system should switch between the traditional and the
+``new&#39;&#39; form of IPC according to the workload and the needs.
+
+&gt; So to give a good answer I think one first need a thourough
+&gt; understanding of how how threading primitives like mutexes and
+&gt; condition variables are implemented, and that&#39;s not really my area.
+
+Not mine either unfortunately...
+
+Roberto
+</pre>
+</body>
+</html>

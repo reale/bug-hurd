@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00226.mbox</title>
+  </head>
+  <body>
+  <div><strong>Date</strong>: Mon, 15 Jul 2002 13:13:30 +0200</div>
+  <div><strong>From</strong>: Marcus Brinkmann &lt;Marcus.Brinkmann@ruhr-uni-bochum.de&gt;</div>
+  <hr/>
+  <pre>On Mon, Jul 15, 2002 at 12:21:55PM +0200, rreale@iol.it wrote:
+&gt; Why we can&#39;t implement message passing entirely in user-space rather
+&gt; than in the kernel?
+
+Imagine you remove all IPC from the kernel.  How do you send a user-space
+message to another process?  You can&#39;t.
+
+That said, there is a lot of things in GNU Mach that can be in user space.
+Mach is a microkernel of the first generation.  Try to take a look at L4,
+which is a modern microkernel that is extremely minimal.
+
+Thanks,
+Marcus
+
+-- 
+`Rhubarb is no Egyptian god.&#39; GNU      http://www.gnu.org    marcus@gnu.org
+Marcus Brinkmann              The Hurd http://www.gnu.org/software/hurd/
+Marcus.Brinkmann@ruhr-uni-bochum.de
+http://www.marcus-brinkmann.de/
+</pre>
+</body>
+</html>

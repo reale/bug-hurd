@@ -1,0 +1,102 @@
+From dwalter@syr.edu Mon Jul 15 13:29:12 2002
+Received: from syr-24-24-5-111.twcny.rr.com ([24.24.5.111] helo=ryojusen)
+	by fencepost.gnu.org with esmtp (Exim 3.35 #1 (Debian))
+	id 17U9eq-0007Pl-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 13:29:12 -0400
+Received: from naritai ([192.168.1.4] ident=mail)
+	by ryojusen with esmtp (Exim 3.35 #1 (Debian))
+	id 17U9es-0008UD-00; Mon, 15 Jul 2002 13:29:14 -0400
+Received: from david by naritai with local (Exim 3.35 #1 (Debian))
+	id 17U9eh-0001ZH-00; Mon, 15 Jul 2002 13:29:03 -0400
+To: rreale@iol.it
+Cc: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+References: <20020715163821.A5411@mail.eq.cr>
+	<20020715150355.85923.qmail@web14601.mail.yahoo.com>
+	<20020715180739.A6861@mail.eq.cr>
+From: David Walter<dwalter@syr.edu>
+Reply-To: dwalter@syr.edu
+Date: Mon, 15 Jul 2002 13:29:03 -0400
+In-Reply-To: <20020715180739.A6861@mail.eq.cr> (rreale@iol.it's message of
+ "Mon, 15 Jul 2002 18:07:39 +0200")
+Message-ID: <87fzykaoio.fsf@syr.edu>
+Lines: 61
+User-Agent: Gnus/5.090007 (Oort Gnus v0.07) XEmacs/21.4 (Common Lisp,
+ i386-debian-linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+rreale@iol.it writes:
+
+> On Mon, Jul 15, 2002 at 08:03:55AM -0700, James Morrison wrote:
+>>  Who delegates where the shared memory is
+>
+> But, I think, whatever component does now memory management.
+>
+>>  and who has access to it?
+>
+> Of  course, the processes  involved  in message passing.   I've some
+> vague ideas on how this could  be performed, but  because of my poor
+> English it's not so simple  for me to  put them down.  Nevertheless,
+> if you think it's not wholly time lost, I'll try to do my best.
+
+
+
+There is a dependency on someone  arbitrating who has control over the
+memory.  Eventually it boils down to one of two models (oversimplified
+but hopefully this will help clarify things)
+
+    1.  Some   priviledged user/process   determines  which memory  is
+    available for communication.
+
+
+    2. A free for all, anyone  can arbitrarily choose to negotiate who
+    to communicate with, and or which memory to use.
+
+
+In  traditional  multi{user,tasking}  OS   design  the  kernel  or   a
+supervisory program   running with  some  special  priviledge  accepts
+requests and grants(or denies) communication channels or allocation of
+memory [1].   In  a   microkernel design,  this  may  be  left  to  an
+independent  'user  space' process,   but   still  it  runs  with  the
+priviledge of making the decision.
+
+
+In  [2] the process can  access memory as  it wants.  One problem with
+[2] is  that, (as in  {IBM-PC/MS}/DOS) a mis-behaving or  evil process
+can access memory which is being used by other processes.  In the case
+of an errant uninitialized or   faulty pointer, the address can  cause
+_bad_(TM) things to occur.
+
+Bad things include overwriting memory in other programs address space,
+including  device drivers  and system resources.   Imagine overwriting
+the console driver's  interface,   or replacing an  interrupt  vectors
+pointer to point to a memory location with your evil routine, then you
+can capture keystrokes, or lock the machine.
+
+This type of   problem   (lockup's  or freezing or   misbehaviour   of
+programs)  was a  frequent occurrence  with   pc's, up  to the current
+implementations of windows (non/NT (aka OS/2) kernel).
+
+
+HTH.
+--
+Hope springs eternal!
+
+/^\
+\ /     ASCII RIBBON CAMPAIGN
+ X        AGAINST HTML MAIL
+/ \

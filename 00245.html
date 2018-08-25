@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00245.mbox</title>
+  </head>
+  <body>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 12:44:07 -0700</div>
+  <div><strong>From</strong>: James Morrison &lt;rocketmail_com@rocketmail.com&gt;</div>
+  <hr/>
+  <pre>
+ Ok, so it looks like every process maintains it&#39;s own set of queues.  So
+I am a server process and I setup 3 queues for clients to write in.  Now,
+how do the clients know where to write the data so I can find it?  Previously,
+you said it would be the memory managers job.  So, I write to some pre-defined
+queue of the memory manager, to say people can write msg&#39;s to me.  Now, any
+process can ask the memory manager where to put msg&#39;s to me.  If this is what
+you are thinking, it sort of makes sense.  But assumming we have a process/task
+boundary where each process has it&#39;s own virtual address space how can it break
+this barrier without the kernel&#39;s help?  I can sort of wrap my brain around
+this,
+but I keep comming back to crazy libc hacks.
+
+=====
+James Morrison
+   University of Waterloo
+   Computer Science - Digital Hardware
+   2A co-op
+http://hurd.dyndns.org
+
+Anyone referring to this as &#39;Open Source&#39; shall be eaten by a GNU
+</pre>
+</body>
+</html>

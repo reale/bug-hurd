@@ -1,0 +1,55 @@
+From Marcus.Brinkmann@ruhr-uni-bochum.de Mon Jul 15 07:13:37 2002
+Received: from porta.u64.de ([194.77.88.106])
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17U3nM-0001DF-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 07:13:36 -0400
+Received: from (localhost) [212.23.136.22] 
+	by porta.u64.de with asmtp (Exim 3.12 #1 (Debian))
+	id 17U4XV-0007qu-00; Mon, 15 Jul 2002 14:01:17 +0200
+Received: from marcus by localhost with local (Exim 3.35 #1 (Debian))
+	id 17U3nH-0000H6-00; Mon, 15 Jul 2002 13:13:31 +0200
+Date: Mon, 15 Jul 2002 13:13:30 +0200
+From: Marcus Brinkmann <Marcus.Brinkmann@ruhr-uni-bochum.de>
+To: rreale@iol.it
+Cc: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+Message-ID: <20020715111330.GD432@212.23.136.22>
+References: <20020715122155.A2600@mail.eq.cr>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20020715122155.A2600@mail.eq.cr>
+User-Agent: Mutt/1.4i
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+On Mon, Jul 15, 2002 at 12:21:55PM +0200, rreale@iol.it wrote:
+> Why we can't implement message passing entirely in user-space rather
+> than in the kernel?
+
+Imagine you remove all IPC from the kernel.  How do you send a user-space
+message to another process?  You can't.
+
+That said, there is a lot of things in GNU Mach that can be in user space.
+Mach is a microkernel of the first generation.  Try to take a look at L4,
+which is a modern microkernel that is extremely minimal.
+
+Thanks,
+Marcus
+
+-- 
+`Rhubarb is no Egyptian god.' GNU      http://www.gnu.org    marcus@gnu.org
+Marcus Brinkmann              The Hurd http://www.gnu.org/software/hurd/
+Marcus.Brinkmann@ruhr-uni-bochum.de
+http://www.marcus-brinkmann.de/

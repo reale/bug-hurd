@@ -1,0 +1,46 @@
+From rreale@iol.it Tue Jul 16 06:26:20 2002
+Received: from ppp-105-53.26-151.libero.it ([151.26.53.105] helo=localhost.localdomain)
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17UPX9-0004Ka-00
+	for <bug-hurd@gnu.org>; Tue, 16 Jul 2002 06:26:19 -0400
+Received: from rreale by localhost.localdomain with local (Exim 3.12 #1 (Debian))
+	id 17UPXN-0003kD-00
+	for <bug-hurd@gnu.org>; Tue, 16 Jul 2002 12:26:33 +0200
+Date: Tue, 16 Jul 2002 12:26:33 +0200
+To: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+Message-ID: <20020716122633.A10240@mail.eq.cr>
+References: <20020715122155.A2600@mail.eq.cr> <20020715111330.GD432@212.23.136.22> <20020715163821.A5411@mail.eq.cr> <nn8z4chv6j.fsf@fafner.lysator.liu.se>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.2.5i
+In-Reply-To: <nn8z4chv6j.fsf@fafner.lysator.liu.se>; from nisse@lysator.liu.se on Tue, Jul 16, 2002 at 11:35:31AM +0200
+From: rreale@iol.it
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+On Tue, Jul 16, 2002 at 11:35:31AM +0200, Niels M?ller wrote:
+> rreale@iol.it writes:
+> 
+> > But isn't it possible to build a sort of mechanism based on shared memory,
+> > thus avoiding the passage across the kernel?
+> 
+> It might be possible to create an ipc mechanism for pure data using
+> only shared memory, even if it seems somewhat tricky to make it robust.
+
+But how much performance imprevement would we achieve if we created such
+a mechanism, only for pure data?
+
+Roberto

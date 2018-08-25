@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00258.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 22:58:40 +0200</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; I&#39;ll try to roughly explain my idea, which doesn&#39;t apply
+&gt; to every IPC type, but only to a small subset thereof. This 
+&gt; subset includes the message passing between a client/server
+&gt; pair and among the servers themselves, with the additional
+&gt; constraint of very small pieces of data being passed at once.
+
+I think the problem is that you have some memory shared between
+threads (of different processes). For now, I&#39;m assuming that this
+sharing is setup in advance by some memory manager or kernel
+mechanism.
+
+But as several threads need to access the memory in parallell, you
+need to use some syncronization primitives (mutexes, condition
+variables, see any book on programming with threads) to coordinate
+access. And as far as I can see, that&#39;s hard to do without kernel help.
+
+One basic problem is: I&#39;m an idle server process, and I want to wait
+for a client to send me a message. How do I do that? There are two
+ways: Either I poll the structures regularly, or I need some basic ipc
+primitive, typically a wakeup call to a thread in a different process.
+In the former case, I&#39;ll either waste cpu time or get slow ipc
+response time, and for the latter case, it seems hard to do it
+completely in user space.
+
+So to give a good answer I think one first need a thourough
+understanding of how how threading primitives like mutexes and
+condition variables are implemented, and that&#39;s not really my area.
+
+/Niels
+</pre>
+</body>
+</html>

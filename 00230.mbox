@@ -1,0 +1,46 @@
+From rreale@iol.it Mon Jul 15 12:07:26 2002
+Received: from ppp-111-65.26-151.libero.it ([151.26.65.111] helo=localhost.localdomain)
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17U8Nh-0004cS-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 12:07:26 -0400
+Received: from rreale by localhost.localdomain with local (Exim 3.12 #1 (Debian))
+	id 17U8Nv-0001nA-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 18:07:39 +0200
+Date: Mon, 15 Jul 2002 18:07:39 +0200
+To: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+Message-ID: <20020715180739.A6861@mail.eq.cr>
+References: <20020715163821.A5411@mail.eq.cr> <20020715150355.85923.qmail@web14601.mail.yahoo.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.2.5i
+In-Reply-To: <20020715150355.85923.qmail@web14601.mail.yahoo.com>; from rocketmail_com@rocketmail.com on Mon, Jul 15, 2002 at 08:03:55AM -0700
+From: rreale@iol.it
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+On Mon, Jul 15, 2002 at 08:03:55AM -0700, James Morrison wrote:
+>  Who delegates where the shared memory is 
+
+But, I think, whatever component does now memory management.
+
+>  and who has access to it?
+
+Of course, the processes involved in message passing.
+I've some vague ideas on how this could be performed, but because of my 
+poor English it's not so simple for me to put them down.
+Nevertheless, if you think it's not wholly time lost, I'll try to do my best.
+
+Roberto

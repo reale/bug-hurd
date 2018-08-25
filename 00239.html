@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00239.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 11:35:31 +0200</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; But isn&#39;t it possible to build a sort of mechanism based on shared memory,
+&gt; thus avoiding the passage across the kernel?
+
+It might be possible to create an ipc mechanism for pure data using
+only shared memory, even if it seems somewhat tricky to make it robust.
+
+But IPC is more than just data. For Hurd IPC we also need to be able
+to send memory pages (by reference, not copying them), and port
+rights. On Mach, all that is in the kernel, on L4, management of port
+rights will likely move to user space, but management of the ownership
+of individual memory pages is a natural thing for the kernel to do,
+and that&#39;s the case also for L4.
+
+I suspect that the minimal kernel IPC mechanism that is needed for the
+Hurd is something like &#34;give this other process access to this
+particular memory page&#34;. L4 provides slightly more than that, and
+that&#39;s probably good for performance, in particular for ipc calls
+where the data fit in registers.
+
+Regards,
+/Niels
+</pre>
+</body>
+</html>

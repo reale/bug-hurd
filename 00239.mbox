@@ -1,0 +1,63 @@
+From nisse@lysator.liu.se Tue Jul 16 05:35:34 2002
+Received: from mail.lysator.liu.se ([130.236.254.3])
+	by fencepost.gnu.org with esmtp (Exim 3.35 #1 (Debian))
+	id 17UOk2-0002EK-00
+	for <bug-hurd@gnu.org>; Tue, 16 Jul 2002 05:35:34 -0400
+Received: from fafner.lysator.liu.se (fafner.lysator.liu.se [130.236.254.31])
+	by mail.lysator.liu.se (Postfix) with ESMTP
+	id CC13E83602B; Tue, 16 Jul 2002 11:35:33 +0200 (MET DST)
+Received: (from nisse@localhost)
+	by fafner.lysator.liu.se (8.9.3/8.8.7) id LAA21311;
+	Tue, 16 Jul 2002 11:35:32 +0200 (MEST)
+X-Authentication-Warning: fafner.lysator.liu.se: nisse set sender to nisse@lysator.liu.se using -f
+To: rreale@iol.it
+Cc: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+References: <20020715122155.A2600@mail.eq.cr>
+	<20020715111330.GD432@212.23.136.22> <20020715163821.A5411@mail.eq.cr>
+Content-type: text/plain; charset=iso-8859-1
+Content-transfer-encoding: 8bit
+From: nisse@lysator.liu.se (Niels =?iso-8859-1?q?M=F6ller?=)
+Date: 16 Jul 2002 11:35:31 +0200
+In-Reply-To: <20020715163821.A5411@mail.eq.cr>
+Message-ID: <nn8z4chv6j.fsf@fafner.lysator.liu.se>
+Lines: 23
+User-Agent: Gnus/5.09 (Gnus v5.9.0) Emacs/21.2
+MIME-Version: 1.0
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+rreale@iol.it writes:
+
+> But isn't it possible to build a sort of mechanism based on shared memory,
+> thus avoiding the passage across the kernel?
+
+It might be possible to create an ipc mechanism for pure data using
+only shared memory, even if it seems somewhat tricky to make it robust.
+
+But IPC is more than just data. For Hurd IPC we also need to be able
+to send memory pages (by reference, not copying them), and port
+rights. On Mach, all that is in the kernel, on L4, management of port
+rights will likely move to user space, but management of the ownership
+of individual memory pages is a natural thing for the kernel to do,
+and that's the case also for L4.
+
+I suspect that the minimal kernel IPC mechanism that is needed for the
+Hurd is something like "give this other process access to this
+particular memory page". L4 provides slightly more than that, and
+that's probably good for performance, in particular for ipc calls
+where the data fit in registers.
+
+Regards,
+/Niels

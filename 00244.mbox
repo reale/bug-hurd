@@ -1,0 +1,115 @@
+From rreale@iol.it Tue Jul 16 12:17:23 2002
+Received: from ppp-117-61.26-151.libero.it ([151.26.61.117] helo=localhost.localdomain)
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17UV0s-0003Pu-00
+	for <bug-hurd@gnu.org>; Tue, 16 Jul 2002 12:17:23 -0400
+Received: from rreale by localhost.localdomain with local (Exim 3.12 #1 (Debian))
+	id 17UV17-0000aw-00
+	for <bug-hurd@gnu.org>; Tue, 16 Jul 2002 18:17:37 +0200
+Date: Tue, 16 Jul 2002 18:17:37 +0200
+To: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+Message-ID: <20020716181737.A2261@mail.eq.cr>
+References: <20020715122155.A2600@mail.eq.cr> <20020715111330.GD432@212.23.136.22> <20020715163821.A5411@mail.eq.cr> <nn8z4chv6j.fsf@fafner.lysator.liu.se> <20020716122633.A10240@mail.eq.cr> <nnit3fhiib.fsf@fafner.lysator.liu.se>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.2.5i
+In-Reply-To: <nnit3fhiib.fsf@fafner.lysator.liu.se>; from nisse@lysator.liu.se on Tue, Jul 16, 2002 at 04:09:16PM +0200
+From: rreale@iol.it
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+On Tue, Jul 16, 2002 at 04:09:16PM +0200, Niels M?ller wrote:
+> rreale@iol.it writes:
+> 
+> > But how much performance imprevement would we achieve if we created such
+> > a mechanism, only for pure data?
+> 
+> The fastest way to do it that I can imagine, for the simplest case of
+> mutually trusting processes, is to have a (possibly) short message
+> queue, protected by a mutex and some condition variables, all in th
+> eshared memory page. It's not obvious to me if that will be slower or
+> faster than L4 ipc that can pass the data in registers.
+> 
+> Furthermore, I have never implemented mutexes and condition variables,
+> but I wouldn't be surprised if some syscall is needed for conditions
+> to propagate between threads or processes.
+> 
+> Regards,
+> /Niels
+
+I'll try to roughly explain my idea, which doesn't apply
+to every IPC type, but only to a small subset thereof. This 
+subset includes the message passing between a client/server
+pair and among the servers themselves, with the additional
+constraint of very small pieces of data being passed at once.
+In this scenario we could use one (or even more) system-wide
+data structure, such as a queue, to manage all the messages.
+This queue would be made up of several smaller queues, each
+one pertaining to a single process (or group of processes)
+and used by this process to talk with one or more servers.
+Each small queue would live in one page (or more, but few, pages)
+or memory shared with the servers. One possible (simplified)
+arrangement of the memory would look like this:
+
+  process #1        process #2        process #3  
+| address   |     | address   |     | address   | 
+| space     |     | space     |     | space     |
+|-----------|     |-----------|     |-----------|
+| text etc. |     | text etc. |     | text etc. |
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+|   heap    |     |   heap    |     |   heap    |
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+| IPC queue |-+   | IPC queue |-+   | IPC queue |-+
+|-----------| |   |-----------| |   |-----------| |
+|           | |   |           | |   |           | |
+|-----------| |   |-----------| |   |-----------| |
+|   stack   | |   |   stack   | |   |   stack   | |
+|-----------| |   |-----------| |   |-----------| |
+|           | |   |           | |   |           | |
+              |                 |                 |
+              |                 |                 |
+              |                 |                 |
+              +-----------+     |     +-----------+
+                          |     |     |
+                          |     |     |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+server #1|        |  h  |q   |q    |q    |q    |    |         |
+address  |  text  |  e  |u   |u    |u    |u    |    |  stack  |
+space    |  etc.  |  a  |e 1 |e 2  |e 3  |e n  |    |         |
+         |        |  p  |u   |u    |u    |u    |    |         |
+         |        |     |e   |e    |e    |e    |    |         |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+                          |     |     |
+                          |     |     |
+                          |     |     |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+server #2|        |  h  |q   |q    |q    |q    |    |         |
+address  |  text  |  e  |u   |u    |u    |u    |    |  stack  |
+space    |  etc.  |  a  |e 1 |e 2  |e 3  |e n  |    |         |
+         |        |  p  |u   |u    |u    |u    |    |         |
+         |        |     |e   |e    |e    |e    |    |         |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+
+Sorry for the lack of clearness, but my idea - and for that matter
+my English - are alas at early alpha stage. I'd like, however,
+to hear your criticism and hopefully your suggestions.
+
+Thanks,
+Roberto

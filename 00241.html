@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00241.mbox</title>
+  </head>
+  <body>
+  <div><strong>From</strong>: nisse@lysator.liu.se</div>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 16:09:16 +0200</div>
+  <hr/>
+  <pre>rreale@iol.it writes:
+
+&gt; But how much performance imprevement would we achieve if we created such
+&gt; a mechanism, only for pure data?
+
+The fastest way to do it that I can imagine, for the simplest case of
+mutually trusting processes, is to have a (possibly) short message
+queue, protected by a mutex and some condition variables, all in th
+eshared memory page. It&#39;s not obvious to me if that will be slower or
+faster than L4 ipc that can pass the data in registers.
+
+Furthermore, I have never implemented mutexes and condition variables,
+but I wouldn&#39;t be surprised if some syscall is needed for conditions
+to propagate between threads or processes.
+
+Regards,
+/Niels
+</pre>
+</body>
+</html>

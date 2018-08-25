@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00244.mbox</title>
+  </head>
+  <body>
+  <div><strong>Date</strong>: Tue, 16 Jul 2002 18:17:37 +0200</div>
+  <div><strong>From</strong>: rreale@iol.it</div>
+  <hr/>
+  <pre>On Tue, Jul 16, 2002 at 04:09:16PM +0200, Niels M?ller wrote:
+&gt; rreale@iol.it writes:
+&gt; 
+&gt; &gt; But how much performance imprevement would we achieve if we created such
+&gt; &gt; a mechanism, only for pure data?
+&gt; 
+&gt; The fastest way to do it that I can imagine, for the simplest case of
+&gt; mutually trusting processes, is to have a (possibly) short message
+&gt; queue, protected by a mutex and some condition variables, all in th
+&gt; eshared memory page. It&#39;s not obvious to me if that will be slower or
+&gt; faster than L4 ipc that can pass the data in registers.
+&gt; 
+&gt; Furthermore, I have never implemented mutexes and condition variables,
+&gt; but I wouldn&#39;t be surprised if some syscall is needed for conditions
+&gt; to propagate between threads or processes.
+&gt; 
+&gt; Regards,
+&gt; /Niels
+
+I&#39;ll try to roughly explain my idea, which doesn&#39;t apply
+to every IPC type, but only to a small subset thereof. This 
+subset includes the message passing between a client/server
+pair and among the servers themselves, with the additional
+constraint of very small pieces of data being passed at once.
+In this scenario we could use one (or even more) system-wide
+data structure, such as a queue, to manage all the messages.
+This queue would be made up of several smaller queues, each
+one pertaining to a single process (or group of processes)
+and used by this process to talk with one or more servers.
+Each small queue would live in one page (or more, but few, pages)
+or memory shared with the servers. One possible (simplified)
+arrangement of the memory would look like this:
+
+  process #1        process #2        process #3  
+| address   |     | address   |     | address   | 
+| space     |     | space     |     | space     |
+|-----------|     |-----------|     |-----------|
+| text etc. |     | text etc. |     | text etc. |
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+|   heap    |     |   heap    |     |   heap    |
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+|           |     |           |     |           |
+|-----------|     |-----------|     |-----------|
+| IPC queue |-+   | IPC queue |-+   | IPC queue |-+
+|-----------| |   |-----------| |   |-----------| |
+|           | |   |           | |   |           | |
+|-----------| |   |-----------| |   |-----------| |
+|   stack   | |   |   stack   | |   |   stack   | |
+|-----------| |   |-----------| |   |-----------| |
+|           | |   |           | |   |           | |
+              |                 |                 |
+              |                 |                 |
+              |                 |                 |
+              +-----------+     |     +-----------+
+                          |     |     |
+                          |     |     |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+server #1|        |  h  |q   |q    |q    |q    |    |         |
+address  |  text  |  e  |u   |u    |u    |u    |    |  stack  |
+space    |  etc.  |  a  |e 1 |e 2  |e 3  |e n  |    |         |
+         |        |  p  |u   |u    |u    |u    |    |         |
+         |        |     |e   |e    |e    |e    |    |         |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+                          |     |     |
+                          |     |     |
+                          |     |     |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+server #2|        |  h  |q   |q    |q    |q    |    |         |
+address  |  text  |  e  |u   |u    |u    |u    |    |  stack  |
+space    |  etc.  |  a  |e 1 |e 2  |e 3  |e n  |    |         |
+         |        |  p  |u   |u    |u    |u    |    |         |
+         |        |     |e   |e    |e    |e    |    |         |
+---------+--------+-----+----+-----+-----+-----+----+---------+--
+
+Sorry for the lack of clearness, but my idea - and for that matter
+my English - are alas at early alpha stage. I&#39;d like, however,
+to hear your criticism and hopefully your suggestions.
+
+Thanks,
+Roberto
+</pre>
+</body>
+</html>

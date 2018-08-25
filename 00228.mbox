@@ -1,0 +1,45 @@
+From rreale@iol.it Mon Jul 15 10:38:15 2002
+Received: from ppp-121-67.26-151.libero.it ([151.26.67.121] helo=localhost.localdomain)
+	by fencepost.gnu.org with smtp (Exim 3.35 #1 (Debian))
+	id 17U6zP-0000lf-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 10:38:15 -0400
+Received: from rreale by localhost.localdomain with local (Exim 3.12 #1 (Debian))
+	id 17U6zV-0001QD-00
+	for <bug-hurd@gnu.org>; Mon, 15 Jul 2002 16:38:21 +0200
+Date: Mon, 15 Jul 2002 16:38:21 +0200
+To: bug-hurd@gnu.org
+Subject: Re: Message passing in user-land
+Message-ID: <20020715163821.A5411@mail.eq.cr>
+References: <20020715122155.A2600@mail.eq.cr> <20020715111330.GD432@212.23.136.22>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.2.5i
+In-Reply-To: <20020715111330.GD432@212.23.136.22>; from Marcus.Brinkmann@ruhr-uni-bochum.de on Mon, Jul 15, 2002 at 01:13:30PM +0200
+From: rreale@iol.it
+Sender: bug-hurd-admin@gnu.org
+Errors-To: bug-hurd-admin@gnu.org
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+List-Id: Bug reports for the GNU Hurd <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd/>
+
+On Mon, Jul 15, 2002 at 01:13:30PM +0200, Marcus Brinkmann wrote:
+> On Mon, Jul 15, 2002 at 12:21:55PM +0200, rreale@iol.it wrote:
+> > Why we can't implement message passing entirely in user-space rather
+> > than in the kernel?
+> 
+> Imagine you remove all IPC from the kernel.  How do you send a user-space
+> message to another process?  You can't.
+ 
+But isn't it possible to build a sort of mechanism based on shared memory,
+thus avoiding the passage across the kernel?
+
+Roberto
