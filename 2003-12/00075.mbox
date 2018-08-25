@@ -1,0 +1,101 @@
+From MAILER-DAEMON Wed Dec 31 14:24:13 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1Ablwy-0004c5-Fg
+	for mharc-bug-hurd@gnu.org; Wed, 31 Dec 2003 14:24:12 -0500
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1Ablwv-0004bP-9O
+	for bug-hurd@gnu.org; Wed, 31 Dec 2003 14:24:09 -0500
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1AblwP-0004WC-F7
+	for bug-hurd@gnu.org; Wed, 31 Dec 2003 14:24:08 -0500
+Received: from [199.232.41.8] (helo=mx20.gnu.org)
+	by monty-python.gnu.org with esmtp (TLSv1:DES-CBC3-SHA:168)
+	(Exim 4.24) id 1AblwP-0004W8-76
+	for bug-hurd@gnu.org; Wed, 31 Dec 2003 14:23:37 -0500
+Received: from [145.74.66.11] (helo=mail-cn.han.nl)
+	by mx20.gnu.org with esmtp (Exim 4.24) id 1Abkww-0003Vc-HI
+	for bug-hurd@gnu.org; Wed, 31 Dec 2003 13:20:06 -0500
+Received: from localhost (charlie.han.nl [145.74.66.9])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id BDA5D817D; Wed, 31 Dec 2003 19:15:50 +0100 (CET)
+Received: from mail-cn.han.nl ([145.74.66.11])
+	by localhost (charlie.han.nl [145.74.66.9]) (amavisd-new, port 10024)
+	with ESMTP id 17314-03; Wed, 31 Dec 2003 19:15:49 +0100 (CET)
+Received: from mail.han.nl (mail.han.nl [145.74.103.11])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id 1565F816B; Wed, 31 Dec 2003 19:15:39 +0100 (CET)
+Received: from marco.marco-g.com (1Cust231.tnt33.rtm1.nld.da.uu.net
+	[213.116.160.231]) by mail.han.nl (Postfix) with ESMTP
+	id 3B1C8C045; Wed, 31 Dec 2003 19:15:32 +0100 (CET)
+Sender: marco@marco.marco-g.com
+Mail-Copies-To: metgerards@student.han.nl
+To: "Roberto Reale" <rreale@iol.it>
+References: <20031014110709.GA18717@mail.siviglia.cr>
+	<87hdzo7euh.fsf@marco.marco-g.com>
+	<20031229104718.GA2330@mail.siviglia.cr>
+From: Marco Gerards <metgerards@student.han.nl>
+Date: 31 Dec 2003 19:15:49 +0100
+In-Reply-To: <20031229104718.GA2330@mail.siviglia.cr>
+Message-ID: <87y8ss26qy.fsf@marco.marco-g.com>
+Lines: 42
+User-Agent: Gnus/5.09 (Gnus v5.9.0) Emacs/21.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Virus-Scanned: by amavisd-new@vscan-cn.han.nl
+Cc: bug-hurd@gnu.org
+Subject: Re: MINIX fs translator - new alpha release
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Wed, 31 Dec 2003 19:24:10 -0000
+
+"Roberto Reale" <rreale@iol.it> writes:
+
+> On Thu, Dec 25, 2003 at 10:43:50PM +0100, Marco Gerards wrote:
+> 
+> > Did you manage to fix those bugs you spoke about and are you still
+> > interested in making this translator to work properly?
+> 
+>   To be sure I am interested in making my translator work properly!
+> Indeed, I have been working at a new revision, which is now
+> half-finished.  Several bugs have been fixed, but I have not done very
+> much testing, so others are likely to have escaped my search.
+> However, the translator does appear to work.
+
+Good!  I'm looking forward to the release.
+
+>   Regrettably, during the last four or five weeks I have been fairly
+> busy, so my ``development pace'' has slackened somewhat.  Anyway, the
+> new revision should be ready in a month or so.
+
+Nice.
+
+> > Unfortunately I'm quite busy at the moment.  I can have a look at your
+> > code in a about a month.  If one of the Hurd maintainers wants to
+> > include minixfs in the Hurd I can help with this.
+> > 
+> > I also wrote an (unreleased, unfinished) minixfs implementation, we
+> > can have a look which one of these two is the best and use that.
+> 
+>   I should be glad to have your opinion and advice.  If you deem it
+> expedient, we might pick up from our implementations the best ideas
+> and merge them together, thus making the most of both your work and
+> mine.
+
+I will have a look at your code when you release it.  I won't have
+time next month, but you said it will take a month anyway.
+
+>   Thank you very much for your interest in my work.
+
+Thank you for doing this work!
+
+--
+Marco

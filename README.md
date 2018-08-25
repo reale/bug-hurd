@@ -5,6 +5,9 @@ My mails to the bug-hurd mailing list, with replies.
 ### MINIX fs translator - new alpha release
 
 * [MINIX fs translator - new alpha release](2003-10/00039.html), Roberto Reale, 2003/10/14 ([mbox](2003-10/00039.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-10/msg00039.html))
+    * [Re: MINIX fs translator - new alpha release](2003-12/00055.html), Marco Gerards, 2003/12/25 ([mbox](2003-12/00055.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-12/msg00055.html))
+        * [Re: MINIX fs translator - new alpha release](2003-12/00065.html), Roberto Reale, 2003/12/29 ([mbox](2003-12/00065.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-12/msg00065.html))
+            * [Re: MINIX fs translator - new alpha release](2003-12/00075.html), Marco Gerards, 2003/12/31 ([mbox](2003-12/00075.mbox), [archive](http://lists.gnu.org/archive/html/bug-hurd/2003-12/msg00075.html))
 
 ### MINIX fs translator - pre-release 0.02
 

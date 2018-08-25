@@ -1,0 +1,91 @@
+From MAILER-DAEMON Thu Dec 25 17:46:16 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1AZeFE-0006e3-OZ
+	for mharc-bug-hurd@gnu.org; Thu, 25 Dec 2003 17:46:16 -0500
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1AZeF7-0006cW-82
+	for bug-hurd@gnu.org; Thu, 25 Dec 2003 17:46:09 -0500
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1AZeEY-0006Tc-PV
+	for bug-hurd@gnu.org; Thu, 25 Dec 2003 17:46:07 -0500
+Received: from [145.74.66.11] (helo=mail-cn.han.nl)
+	by monty-python.gnu.org with esmtp (Exim 4.24) id 1AZeEX-0006TA-Tl
+	for bug-hurd@gnu.org; Thu, 25 Dec 2003 17:45:34 -0500
+Received: from localhost (charlie.han.nl [145.74.66.9])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id 3E28187CB; Thu, 25 Dec 2003 22:43:57 +0100 (CET)
+Received: from mail-cn.han.nl ([145.74.66.11])
+	by localhost (charlie.han.nl [145.74.66.9]) (amavisd-new, port 10024)
+	with ESMTP id 26385-10; Thu, 25 Dec 2003 22:43:56 +0100 (CET)
+Received: from mail.han.nl (mail.han.nl [145.74.103.11])
+	by mail-cn.han.nl (Postfix) with ESMTP
+	id B879C83B4; Thu, 25 Dec 2003 22:43:45 +0100 (CET)
+Received: from marco.marco-g.com (1Cust161.tnt49.rtm1.nld.da.uu.net
+	[213.117.16.161]) by mail.han.nl (Postfix) with ESMTP
+	id D0CE7C045; Thu, 25 Dec 2003 22:43:38 +0100 (CET)
+Sender: marco@marco.marco-g.com
+Mail-Copies-To: metgerards@student.han.nl
+To: "Roberto Reale" <rreale@iol.it>
+References: <20031014110709.GA18717@mail.siviglia.cr>
+From: Marco Gerards <metgerards@student.han.nl>
+Date: 25 Dec 2003 22:43:50 +0100
+In-Reply-To: <20031014110709.GA18717@mail.siviglia.cr>
+Message-ID: <87hdzo7euh.fsf@marco.marco-g.com>
+Lines: 38
+User-Agent: Gnus/5.09 (Gnus v5.9.0) Emacs/21.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+X-Virus-Scanned: by amavisd-new@vscan-cn.han.nl
+Cc: bug-hurd@gnu.org
+Subject: Re: MINIX fs translator - new alpha release
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Thu, 25 Dec 2003 22:46:10 -0000
+
+"Roberto Reale" <rreale@iol.it> writes:
+
+Hi,
+
+I'm really sorry about the late reply. (Thanks for reminding me
+Alfred!)
+
+>   I've made a new release (0.03) of the MINIX fs translator at which
+> I'm working (a modified version of the Ext2 translator, actually).  It
+> still lacks good stability, yet some very nasty bugs (and very silly
+> ones, too, which I myself introduced during the process of adapting
+> the Ext2 code) have been fixed and, although very fitfully, it appears
+> to work.
+
+Did you manage to fix those bugs you spoke about and are you still
+interested in making this translator to work properly?
+
+>   As one would expect of an alpha release, the code still needs a good
+> deal of polishing and revising.  If you would like to cast a glance at
+> it, and perhaps also try it, I shall be glad to receive suggestions,
+> criticism and especially bug reports.
+> 
+>   The translator is available at
+> 
+> http://paideia.sourceforge.net/index.html
+> http://prdownloads.sourceforge.net/paideia/hurd-minixfs-0.03.tar.gz?download
+
+Unfortunately I'm quite busy at the moment.  I can have a look at your
+code in a about a month.  If one of the Hurd maintainers wants to
+include minixfs in the Hurd I can help with this.
+
+I also wrote an (unreleased, unfinished) minixfs implementation, we
+can have a look which one of these two is the best and use that.
+
+Marcus, what do you think?
+
+Thanks,
+Marco

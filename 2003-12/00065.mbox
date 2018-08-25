@@ -1,0 +1,73 @@
+From MAILER-DAEMON Mon Dec 29 06:51:10 2003
+Received: from list by monty-python.gnu.org with archive (Exim 4.24)
+	id 1AavvR-0006tI-KK
+	for mharc-bug-hurd@gnu.org; Mon, 29 Dec 2003 06:51:09 -0500
+Received: from list by monty-python.gnu.org with tmda-scanned (Exim 4.24)
+	id 1AavvG-0006pt-2U
+	for bug-hurd@gnu.org; Mon, 29 Dec 2003 06:50:58 -0500
+Received: from mail by monty-python.gnu.org with spam-scanned (Exim 4.24)
+	id 1Aavuh-0006hU-VR
+	for bug-hurd@gnu.org; Mon, 29 Dec 2003 06:50:55 -0500
+Received: from [193.70.192.127] (helo=smtp3.libero.it)
+	by monty-python.gnu.org with esmtp (Exim 4.24) id 1Aavsm-0006QI-Fl
+	for bug-hurd@gnu.org; Mon, 29 Dec 2003 06:48:24 -0500
+Received: from siviglia (151.26.102.106) by smtp3.libero.it (7.0.020-DD01)
+	id 3F6F04A601D6F42E; Mon, 29 Dec 2003 11:46:51 +0100
+Received: by siviglia (sSMTP sendmail emulation);
+	Mon, 29 Dec 2003 11:49:33 +0100
+From: "Roberto Reale" <rreale@iol.it>
+Date: Mon, 29 Dec 2003 11:49:33 +0100
+To: Marco Gerards <metgerards@student.han.nl>
+Message-ID: <20031229104718.GA2330@mail.siviglia.cr>
+References: <20031014110709.GA18717@mail.siviglia.cr>
+	<87hdzo7euh.fsf@marco.marco-g.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87hdzo7euh.fsf@marco.marco-g.com>
+User-Agent: Mutt/1.3.28i
+Cc: bug-hurd@gnu.org
+Subject: Re: MINIX fs translator - new alpha release
+X-BeenThere: bug-hurd@gnu.org
+X-Mailman-Version: 2.1.2
+Precedence: list
+List-Id: Bug reports for the GNU Hurd  <bug-hurd.gnu.org>
+List-Unsubscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://mail.gnu.org/pipermail/bug-hurd>
+List-Post: <mailto:bug-hurd@gnu.org>
+List-Help: <mailto:bug-hurd-request@gnu.org?subject=help>
+List-Subscribe: <http://mail.gnu.org/mailman/listinfo/bug-hurd>,
+	<mailto:bug-hurd-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Mon, 29 Dec 2003 11:51:01 -0000
+
+On Thu, Dec 25, 2003 at 10:43:50PM +0100, Marco Gerards wrote:
+
+> Did you manage to fix those bugs you spoke about and are you still
+> interested in making this translator to work properly?
+
+  To be sure I am interested in making my translator work properly!
+Indeed, I have been working at a new revision, which is now
+half-finished.  Several bugs have been fixed, but I have not done very
+much testing, so others are likely to have escaped my search.
+However, the translator does appear to work.
+
+  Regrettably, during the last four or five weeks I have been fairly
+busy, so my ``development pace'' has slackened somewhat.  Anyway, the
+new revision should be ready in a month or so.
+
+> Unfortunately I'm quite busy at the moment.  I can have a look at your
+> code in a about a month.  If one of the Hurd maintainers wants to
+> include minixfs in the Hurd I can help with this.
+> 
+> I also wrote an (unreleased, unfinished) minixfs implementation, we
+> can have a look which one of these two is the best and use that.
+
+  I should be glad to have your opinion and advice.  If you deem it
+expedient, we might pick up from our implementations the best ideas
+and merge them together, thus making the most of both your work and
+mine.
+
+  Thank you very much for your interest in my work.
+Roberto Reale
+rreale@iol.it
